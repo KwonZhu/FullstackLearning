@@ -1,0 +1,65 @@
+form {
+  color: #384047;
+  max-width: 580px;
+  margin: 10px auto;
+  padding: 10px 20px 60px 20px;
+  background: #f4f7f8;
+  border-radius: 8px; }
+
+h1 {
+  text-align: center;
+  margin: 0 0 30px 0; }
+
+fieldset {
+  border: none;
+  margin-bottom: 30px; }
+  fieldset legend {
+    font-size: 1.4rem;
+    margin-bottom: 10px; }
+
+legend::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #007a5a;
+  border-radius: 50%;
+  margin-right: 15px; }
+
+.text__input,
+select {
+  border: none;
+  outline-style: none;
+  font-size: 1rem;
+  color: #8a97a0;
+  padding: 15px 10px;
+  width: 100%;
+  background-color: #e8eeef;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+  border-radius: 5px; }
+
+.gender {
+  margin-bottom: 60px; }
+
+input[type='radio'],
+input[type='checkbox'] {
+  margin: 0 4px 8px 0; }
+
+button {
+  width: 100%;
+  outline: none;
+  border: 1px solid #4bc970;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #4bc970;
+  font-size: 18px;
+  color: #fff; }
+
+button:hover {
+  border-color: #4bc970;
+  color: #4bc970;
+  background-color: #fff; }
+
+/*# sourceMappingURL=style.css.map */
