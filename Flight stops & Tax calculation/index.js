@@ -23,20 +23,43 @@ const flights = [
   { origin: 'CAN', destination: 'PVG' },
 ];
 
-// version 1
 console.log(getStops(flights));
+
+// version 1
+// function getStops(flights) {
+//   const stop = flights.length - 1;
+//   switch (stop) {
+//     case 0:
+//       return 'Direct';
+//     case 1:
+//       return '1 stop';
+//     case 11:
+//       return 'The dreamLine';
+//     case 27:
+//       return 'Around the world';
+//     default:
+//       return stop + ' stops:';
+//   }
+// }
+
+// version 2
 function getStops(flights) {
   const stop = flights.length - 1;
-  switch (stop) {
-    case 0:
-      return 'Direct';
-    case 1:
-      return '1 stop';
-    case 11:
-      return 'The dreamLine';
-    case 27:
-      return 'Around the world';
-    default:
-      return stop + ' stops:';
+
+  // when using an object, it is easy to expand when more numbers come in
+  const specialCases = {
+    0: 'Direct',
+    1: '1 stop',
+    11: 'The dreamLine',
+    27: 'Around the world',
+    35: '',
+    100: '',
+  };
+
+  const specialCase = specialCases[stop];
+
+  if (specialCase) {
+    return specialCase;
   }
+  return stop + ' stops';
 }
