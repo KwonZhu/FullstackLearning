@@ -43,6 +43,28 @@ console.log(getStops(flights));
 // }
 
 // version 2
+// function getStops(flights) {
+//   const stop = flights.length - 1;
+
+//   // when using an object, it is easy to expand when more numbers come in
+//   const specialCases = {
+//     0: 'Direct',
+//     1: '1 stop',
+//     11: 'The dreamLine',
+//     27: 'Around the world',
+//     35: '',
+//     100: '',
+//   };
+
+//   const specialCase = specialCases[stop];
+
+//   if (specialCase) {
+//     return specialCase;
+//   }
+//   return stop + ' stops';
+// }
+
+// version 2.1
 function getStops(flights) {
   const stop = flights.length - 1;
 
@@ -58,8 +80,5 @@ function getStops(flights) {
 
   const specialCase = specialCases[stop];
 
-  if (specialCase) {
-    return specialCase;
-  }
-  return stop + ' stops';
+  return specialCase ? specialCase : stop + ' stops';
 }
