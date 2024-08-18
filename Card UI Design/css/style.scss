@@ -1,0 +1,72 @@
+.card1 {
+  background-image: linear-gradient(to right, rgba(128, 142, 235, 1), rgba(134, 141, 232, 0.55)),
+    url(../images/card1__bgImg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 400px;
+  height: 250px;
+  margin: 20px;
+  position: relative;
+  border-radius: 15px;
+  &:hover {
+    box-shadow: 5px 5px 10px grey;
+  }
+  &__title {
+    color: white;
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5rem;
+    top: 12%;
+    left: 8%;
+  }
+  &__content {
+    color: white;
+    position: absolute;
+    top: 32%;
+    left: 8%;
+    font-size: 0.8rem;
+    width: 80%;
+  }
+  a {
+    position: absolute;
+    display: inline-block;
+    text-decoration: none;
+    bottom: 23%;
+    left: 8%;
+    border: 1px solid white;
+    color: white;
+    border-radius: 3px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 25px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    &:hover {
+      border: 1px solid rgb(128, 142, 235);
+      color: rgb(128, 142, 235);
+      background-color: white;
+    }
+  }
+}
+
+.card2 {
+  background-color: skyblue;
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+}
+
+.card3 {
+  background-color: orange;
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+}
+
+.card4 {
+  background-color: pink;
+  width: 400px;
+  height: 300px;
+  margin: 20px;
+}
