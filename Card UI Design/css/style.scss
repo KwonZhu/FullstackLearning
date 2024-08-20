@@ -1,5 +1,5 @@
 .card1 {
-  background-image: linear-gradient(to right, rgba(128, 142, 235, 1), rgba(134, 141, 232, 0.55)),
+  background: linear-gradient(to right, rgba(128, 142, 235, 1), rgba(134, 141, 232, 0.55)),
     url(../images/card1__bgImg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,7 +51,7 @@
 }
 
 .card2 {
-  background-image: linear-gradient(to bottom right, rgba(68, 68, 229, 1), rgba(105, 184, 161, 0.7)),
+  background: linear-gradient(to bottom right, rgba(68, 68, 229, 1), rgba(105, 184, 161, 0.7)),
     url(../images/card2__bgImg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -103,7 +103,6 @@
 }
 
 .card3 {
-  background-color: white;
   width: 420px;
   height: 220px;
   margin: 20px;
@@ -112,7 +111,6 @@
   border: 1px solid rgba(rgb(154, 153, 153), 0.1);
   &:hover {
     box-shadow: 5px 5px 10px grey;
-    // box-shadow: 1px 1px 15px rgb(159, 159, 159);
   }
   .information {
     img {
@@ -161,17 +159,58 @@
 }
 
 .card4 {
-  background-color: pink;
-  width: 400px;
-  height: 250px;
+  background: linear-gradient(to bottom right, rgba(128, 142, 235, 1), rgba(134, 141, 232, 0.6));
+  width: 420px;
+  height: 220px;
   margin: 20px;
   position: relative;
+  border-radius: 15px;
+  color: white;
+  &:hover {
+    box-shadow: 5px 5px 10px grey;
+  }
   .information {
-    position: absolute;
     img {
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
+      position: absolute;
+      top: 10%;
+      left: 5%;
     }
+    &__name {
+      font-weight: bold;
+      position: absolute;
+      top: 4%;
+      left: 18%;
+    }
+    &__title {
+      font-size: 0.8rem;
+      position: absolute;
+      top: 18%;
+      left: 18%;
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      &:hover {
+        color: #ffd43b;
+      }
+    }
+    &__rating {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      letter-spacing: -1px;
+      font-size: 0.7rem;
+    }
+  }
+  &__content {
+    position: absolute;
+    bottom: 5%;
+    padding: 0px 25px;
+    line-height: 1.6;
   }
 }
