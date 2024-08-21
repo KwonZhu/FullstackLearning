@@ -7,7 +7,7 @@
   flex-wrap: wrap;
 }
 
-a {
+%a-shared {
   position: absolute;
   display: inline-block;
   text-decoration: none;
@@ -66,7 +66,7 @@ a {
     left: 18%;
   }
   a {
-    @extend a;
+    @extend %a-shared;
     margin-left: 8px;
     &:hover {
       color: $hyperlink-color__hover;
@@ -109,7 +109,7 @@ a {
     width: 80%;
   }
   a {
-    @extend a;
+    @extend %a-shared;
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -156,7 +156,7 @@ a {
     width: 80%;
   }
   a {
-    @extend a;
+    @extend %a-shared;
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -188,7 +188,7 @@ a {
   .information {
     @extend %information-shared;
     a {
-      color: #484fd3;
+      color: card2-background-color__left;
     }
   }
   &__content {
