@@ -1,5 +1,52 @@
+.courses,
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+
+a, .card3 .information a, .card4 .information a, .card1 a, .card2 a {
+  position: absolute;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold; }
+
+.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+  box-shadow: 5px 5px 10px grey; }
+
+.shadow {
+  box-shadow: 5px 5px 10px grey; }
+
+.card3 .information img, .card4 .information img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10%;
+  left: 5%; }
+.card3 .information .information__name, .card4 .information .information__name {
+  font-weight: bold;
+  position: absolute;
+  top: 4%;
+  left: 18%; }
+.card3 .information .information__title, .card4 .information .information__title {
+  font-size: 0.8rem;
+  position: absolute;
+  top: 18%;
+  left: 18%; }
+.card3 .information a, .card4 .information a {
+  margin-left: 8px; }
+  .card3 .information a:hover, .card4 .information a:hover {
+    color: #ffd43b; }
+.card3 .information .information__rating, .card4 .information .information__rating {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  letter-spacing: -1px;
+  font-size: 0.7rem; }
+
 .card1 {
-  background: linear-gradient(to right, #808eeb, rgba(134, 141, 232, 0.55)), url(../images/card1__bgImg.jpg);
+  background: linear-gradient(to right, #808eeb, rgba(134, 141, 232, 0.55)), url("../images/card1__bgImg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 400px;
@@ -7,8 +54,6 @@
   margin: 20px;
   position: relative;
   border-radius: 15px; }
-  .card1:hover {
-    box-shadow: 5px 5px 10px grey; }
   .card1__title {
     color: white;
     position: absolute;
@@ -23,10 +68,7 @@
     left: 8%;
     font-size: 0.8rem;
     width: 80%; }
-  .card1 a {
-    position: absolute;
-    display: inline-block;
-    text-decoration: none;
+  .card1 .card3 .information a, .card3 .information .card1 a, .card1 .card4 .information a, .card4 .information .card1 a, .card1 a {
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -36,7 +78,6 @@
     line-height: 40px;
     padding: 0px 25px;
     font-size: 0.8rem;
-    font-weight: bold;
     letter-spacing: 2px; }
     .card1 a:hover {
       border: 1px solid #808eeb;
@@ -44,7 +85,7 @@
       background-color: white; }
 
 .card2 {
-  background: linear-gradient(to bottom right, #4444e5, rgba(105, 184, 161, 0.7)), url(../images/card2__bgImg.jpg);
+  background: linear-gradient(to right, #4444e5, rgba(105, 184, 161, 0.7)), url("../images/card2__bgImg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 400px;
@@ -52,8 +93,6 @@
   margin: 20px;
   position: relative;
   border-radius: 15px; }
-  .card2:hover {
-    box-shadow: 5px 5px 10px grey; }
   .card2__title {
     color: white;
     position: absolute;
@@ -68,10 +107,7 @@
     left: 8%;
     font-size: 0.8rem;
     width: 80%; }
-  .card2 a {
-    position: absolute;
-    display: inline-block;
-    text-decoration: none;
+  .card2 .card3 .information a, .card3 .information .card2 a, .card2 .card4 .information a, .card4 .information .card2 a, .card2 a {
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -81,11 +117,10 @@
     line-height: 40px;
     padding: 0px 25px;
     font-size: 0.8rem;
-    font-weight: bold;
     letter-spacing: 2px; }
     .card2 a:hover {
-      border: 1px solid #808eeb;
-      color: #808eeb;
+      border: 1px solid #4444e5;
+      color: #4444e5;
       background-color: white; }
 
 .card3 {
@@ -94,39 +129,9 @@
   margin: 20px;
   position: relative;
   border-radius: 15px;
-  border: 1px solid rgba(154, 153, 153, 0.1); }
-  .card3:hover {
-    box-shadow: 5px 5px 10px grey; }
-  .card3 .information img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    position: absolute;
-    top: 10%;
-    left: 5%; }
-  .card3 .information__name {
-    font-weight: bold;
-    position: absolute;
-    top: 4%;
-    left: 18%; }
-  .card3 .information__title {
-    font-size: 0.8rem;
-    position: absolute;
-    top: 18%;
-    left: 18%; }
+  border: 1px solid rgba(128, 128, 128, 0.1); }
   .card3 .information a {
-    display: inline-block;
-    text-decoration: none;
-    color: #484fd3;
-    font-weight: bold; }
-    .card3 .information a:hover {
-      color: #ffd43b; }
-  .card3 .information__rating {
-    position: absolute;
-    top: 10%;
-    right: 5%;
-    letter-spacing: -1px;
-    font-size: 0.7rem; }
+    color: #484fd3; }
   .card3__content {
     position: absolute;
     bottom: 5%;
@@ -141,38 +146,8 @@
   position: relative;
   border-radius: 15px;
   color: white; }
-  .card4:hover {
-    box-shadow: 5px 5px 10px grey; }
-  .card4 .information img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    position: absolute;
-    top: 10%;
-    left: 5%; }
-  .card4 .information__name {
-    font-weight: bold;
-    position: absolute;
-    top: 4%;
-    left: 18%; }
-  .card4 .information__title {
-    font-size: 0.8rem;
-    position: absolute;
-    top: 18%;
-    left: 18%; }
   .card4 .information a {
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    font-weight: bold; }
-    .card4 .information a:hover {
-      color: #ffd43b; }
-  .card4 .information__rating {
-    position: absolute;
-    top: 10%;
-    right: 5%;
-    letter-spacing: -1px;
-    font-size: 0.7rem; }
+    color: white; }
   .card4__content {
     position: absolute;
     bottom: 5%;

@@ -1,6 +1,32 @@
-.card1 {
-  background: linear-gradient(to right, rgba(128, 142, 235, 1), rgba(134, 141, 232, 0.55)),
-    url(../images/card1__bgImg.jpg);
+@import 'themes';
+.courses,
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+a {
+  position: absolute;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@mixin courses-card-layout(
+  $background-color__left,
+  $transparent__left,
+  $background-color__right,
+  $transparent__right,
+  $url
+) {
+  background: linear-gradient(
+      to right,
+      rgba($background-color__left, $transparent__left),
+      rgba($background-color__right, $transparent__right)
+    ),
+    url($url);
   background-repeat: no-repeat;
   background-size: cover;
   width: 400px;
@@ -8,8 +34,63 @@
   margin: 20px;
   position: relative;
   border-radius: 15px;
+}
+
+%card-shadow {
+  box-shadow: 5px 5px 10px grey;
+}
+
+.shadow {
+  box-shadow: 5px 5px 10px grey;
+}
+
+%information-shared {
+  img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+  }
+  .information__name {
+    font-weight: bold;
+    position: absolute;
+    top: 4%;
+    left: 18%;
+  }
+  .information__title {
+    font-size: 0.8rem;
+    position: absolute;
+    top: 18%;
+    left: 18%;
+  }
+  a {
+    @extend a;
+    margin-left: 8px;
+    &:hover {
+      color: $hyperlink-color__hover;
+    }
+  }
+  .information__rating {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    letter-spacing: -1px;
+    font-size: 0.7rem;
+  }
+}
+
+.card1 {
+  @include courses-card-layout(
+    $card1-background-color__left,
+    1,
+    $card1-background-color__right,
+    0.55,
+    '../images/card1__bgImg.jpg'
+  );
   &:hover {
-    box-shadow: 5px 5px 10px grey;
+    @extend %card-shadow;
   }
   &__title {
     color: white;
@@ -28,9 +109,7 @@
     width: 80%;
   }
   a {
-    position: absolute;
-    display: inline-block;
-    text-decoration: none;
+    @extend a;
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -40,28 +119,25 @@
     line-height: 40px;
     padding: 0px 25px;
     font-size: 0.8rem;
-    font-weight: bold;
     letter-spacing: 2px;
     &:hover {
-      border: 1px solid rgb(128, 142, 235);
-      color: rgb(128, 142, 235);
+      border: 1px solid $card1-background-color__left;
+      color: $card1-background-color__left;
       background-color: white;
     }
   }
 }
 
 .card2 {
-  background: linear-gradient(to bottom right, rgba(68, 68, 229, 1), rgba(105, 184, 161, 0.7)),
-    url(../images/card2__bgImg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 400px;
-  height: 250px;
-  margin: 20px;
-  position: relative;
-  border-radius: 15px;
+  @include courses-card-layout(
+    $card2-background-color__left,
+    1,
+    $card2-background-color__right,
+    0.7,
+    '../images/card2__bgImg.jpg'
+  );
   &:hover {
-    box-shadow: 5px 5px 10px grey;
+    @extend %card-shadow;
   }
   &__title {
     color: white;
@@ -80,9 +156,7 @@
     width: 80%;
   }
   a {
-    position: absolute;
-    display: inline-block;
-    text-decoration: none;
+    @extend a;
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -92,11 +166,10 @@
     line-height: 40px;
     padding: 0px 25px;
     font-size: 0.8rem;
-    font-weight: bold;
     letter-spacing: 2px;
     &:hover {
-      border: 1px solid rgb(128, 142, 235);
-      color: rgb(128, 142, 235);
+      border: 1px solid $card2-background-color__left;
+      color: $card2-background-color__left;
       background-color: white;
     }
   }
@@ -108,46 +181,14 @@
   margin: 20px;
   position: relative;
   border-radius: 15px;
-  border: 1px solid rgba(rgb(154, 153, 153), 0.1);
+  border: 1px solid rgba(grey, 0.1);
   &:hover {
-    box-shadow: 5px 5px 10px grey;
+    @extend %card-shadow;
   }
   .information {
-    img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      position: absolute;
-      top: 10%;
-      left: 5%;
-    }
-    &__name {
-      font-weight: bold;
-      position: absolute;
-      top: 4%;
-      left: 18%;
-    }
-    &__title {
-      font-size: 0.8rem;
-      position: absolute;
-      top: 18%;
-      left: 18%;
-    }
+    @extend %information-shared;
     a {
-      display: inline-block;
-      text-decoration: none;
       color: #484fd3;
-      font-weight: bold;
-      &:hover {
-        color: #ffd43b;
-      }
-    }
-    &__rating {
-      position: absolute;
-      top: 10%;
-      right: 5%;
-      letter-spacing: -1px;
-      font-size: 0.7rem;
     }
   }
   &__content {
@@ -159,7 +200,11 @@
 }
 
 .card4 {
-  background: linear-gradient(to bottom right, rgba(128, 142, 235, 1), rgba(134, 141, 232, 0.6));
+  background: linear-gradient(
+    to bottom right,
+    rgba($card1-background-color__left, 1),
+    rgba($card1-background-color__right, 0.6)
+  );
   width: 420px;
   height: 220px;
   margin: 20px;
@@ -167,44 +212,12 @@
   border-radius: 15px;
   color: white;
   &:hover {
-    box-shadow: 5px 5px 10px grey;
+    @extend %card-shadow;
   }
   .information {
-    img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      position: absolute;
-      top: 10%;
-      left: 5%;
-    }
-    &__name {
-      font-weight: bold;
-      position: absolute;
-      top: 4%;
-      left: 18%;
-    }
-    &__title {
-      font-size: 0.8rem;
-      position: absolute;
-      top: 18%;
-      left: 18%;
-    }
+    @extend %information-shared;
     a {
-      display: inline-block;
-      text-decoration: none;
       color: white;
-      font-weight: bold;
-      &:hover {
-        color: #ffd43b;
-      }
-    }
-    &__rating {
-      position: absolute;
-      top: 10%;
-      right: 5%;
-      letter-spacing: -1px;
-      font-size: 0.7rem;
     }
   }
   &__content {
