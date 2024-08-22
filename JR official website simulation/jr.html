@@ -4,39 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JR</title>
+    <link rel="stylesheet" href="jr.css" />
   </head>
   <body>
     <!-- Header -->
-    <div>
-      <img
-        src="https://jiangren.com.au/image/jr-academy-zh-logo.svg"
-        alt="jr academy logo"
-        width="100px"
-        height="15px"
-      />
-      <a href="/">Home</a>
-      <a href="/bootcamps">Bootcamps</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-      <a href="/language">Language</a>
-      <a href="/search"><img src="https://jracademy.com.au/icon/nav-search-icon.svg" alt="" /></a>
-      <button>Sign in</button>
-      <button>Sign up</button>
+    <div class="nav-header">
+      <div class="nav-header-left">
+        <img
+          src="https://jiangren.com.au/image/jr-academy-zh-logo.svg"
+          alt="jr academy logo"
+          class="logo"
+          width="100px"
+          height="15px"
+        />
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/bootcamps">Bootcamps</a>
+        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/contact">Contact</a>
+        <a class="nav-link" href="/language">Language</a>
+      </div>
+      <div class="nav-header-right">
+        <a class="nav-search" href="/search"><img src="https://jracademy.com.au/icon/nav-search-icon.svg" alt="" /></a>
+        <button class="sign-in-button">Sign in</button>
+        <button class="sign-up-button">Sign up</button>
+      </div>
     </div>
     <!-- Banner -->
-    <div>
-      <div style="display: inline-block; width: 50%">
-        <h1>JR Academy</h1>
-        <h2>Launch Your First Australian Tech Job</h2>
-        <p>
+    <div class="banner">
+      <div class="banner-content">
+        <h1 class="banner-content-header">JR Academy</h1>
+        <h2 class="banner-content-subheader">Launch Your First Australian Tech Job</h2>
+        <p class="banner-content-description">
           Explore a comprehensive Australian job-seeking solution - learn new skills, secure internship opportunities,
           optimize your resume, and seamlessly enter the Australian workforce. Simplifying the process, making job
           hunting in Australia effortless!
         </p>
-        <button>Explore Courses</button>
+        <button class="banner-content-button">Explore Courses</button>
       </div>
-      <div style="display: inline-block; width: 40%">
-        <img src="	https://jracademy.com.au/_next/static/media/hero-img.dcf25174.webp" alt="" height="200px" />
+      <div class="banner-img-container">
+        <img class="banner-img" src="	https://jracademy.com.au/_next/static/media/hero-img.dcf25174.webp" alt="" />
       </div>
     </div>
     <!-- Partners -->
