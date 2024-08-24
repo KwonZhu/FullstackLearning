@@ -36,12 +36,12 @@
   border-radius: 15px;
 }
 
-%card-shadow {
+%card-shadow-shared {
   box-shadow: 5px 5px 10px grey;
 }
 
-.shadow {
-  box-shadow: 5px 5px 10px grey;
+%transform-shared {
+  transform: translate(-2px, -2px);
 }
 
 %information-shared {
@@ -90,7 +90,8 @@
     '../images/card1__bgImg.jpg'
   );
   &:hover {
-    @extend %card-shadow;
+    @extend %card-shadow-shared;
+    @extend %transform-shared;
   }
   &__title {
     color: white;
@@ -137,7 +138,8 @@
     '../images/card2__bgImg.jpg'
   );
   &:hover {
-    @extend %card-shadow;
+    @extend %card-shadow-shared;
+    @extend %transform-shared;
   }
   &__title {
     color: white;
@@ -183,7 +185,8 @@
   border-radius: 15px;
   border: 1px solid rgba(grey, 0.1);
   &:hover {
-    @extend %card-shadow;
+    @extend %card-shadow-shared;
+    @extend %transform-shared;
   }
   .information {
     @extend %information-shared;
@@ -212,7 +215,8 @@
   border-radius: 15px;
   color: white;
   &:hover {
-    @extend %card-shadow;
+    @extend %card-shadow-shared;
+    @extend %transform-shared;
   }
   .information {
     @extend %information-shared;

@@ -5,7 +5,7 @@
   align-items: center;
   flex-wrap: wrap; }
 
-a, .card3 .information a, .card4 .information a, .card1 a, .card2 a {
+.card3 .information a, .card4 .information a, .card1 a, .card2 a {
   position: absolute;
   display: inline-block;
   text-decoration: none;
@@ -14,8 +14,8 @@ a, .card3 .information a, .card4 .information a, .card1 a, .card2 a {
 .card1:hover, .card2:hover, .card3:hover, .card4:hover {
   box-shadow: 5px 5px 10px grey; }
 
-.shadow {
-  box-shadow: 5px 5px 10px grey; }
+.card1:hover, .card2:hover, .card3:hover, .card4:hover {
+  transform: translate(-2px, -2px); }
 
 .card3 .information img, .card4 .information img {
   width: 45px;
@@ -68,7 +68,7 @@ a, .card3 .information a, .card4 .information a, .card1 a, .card2 a {
     left: 8%;
     font-size: 0.8rem;
     width: 80%; }
-  .card1 .card3 .information a, .card3 .information .card1 a, .card1 .card4 .information a, .card4 .information .card1 a, .card1 a {
+  .card1 a {
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -107,7 +107,7 @@ a, .card3 .information a, .card4 .information a, .card1 a, .card2 a {
     left: 8%;
     font-size: 0.8rem;
     width: 80%; }
-  .card2 .card3 .information a, .card3 .information .card2 a, .card2 .card4 .information a, .card4 .information .card2 a, .card2 a {
+  .card2 a {
     bottom: 23%;
     left: 8%;
     border: 1px solid white;
@@ -131,7 +131,7 @@ a, .card3 .information a, .card4 .information a, .card1 a, .card2 a {
   border-radius: 15px;
   border: 1px solid rgba(128, 128, 128, 0.1); }
   .card3 .information a {
-    color: #484fd3; }
+    color: card2-background-color__left; }
   .card3__content {
     position: absolute;
     bottom: 5%;
