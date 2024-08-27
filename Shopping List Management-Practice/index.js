@@ -1,4 +1,8 @@
 const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
 let grocery = [
   { name: 'milk', price: 7, quantity: 100 },
@@ -11,31 +15,39 @@ let grocery = [
   { name: 'beef', price: 20, quantity: 100 },
 ];
 
-let shoppingList = [];
+let shoppingList = [
+  { name: 'onion', price: 2, quantity: 2 },
+  { name: 'biscuit', price: 3, quantity: 3 },
+];
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+function showOriginalShoppingList() {
+  console.log('Your current cart:');
+  shoppingList.forEach((item, index) => {
+    console.log(`${index + 1}. ${item.name}: ${item.quantity} item(s)`);
+  });
+}
 
 function showGroceryList() {
-  console.log('Grocery List:');
+  console.log('\nGrocery List:');
   grocery.forEach((item, index) => {
-    console.log(`${index + 1}. ${item.name} | Price: $${item.price}, Available: ${item.quantity}`);
+    console.log(`${index + 1}. ${item.name}  Price: $${item.price}  Available: ${item.quantity}`);
   });
 }
 
 function askForInput() {
-  rl.question('Enter the name of the item you want to buy: ', (name) => {
-    // return the first matched item or undefined;
-    const item = grocery.find((g) => g.name.toLowerCase() === name.toLowerCase());
+  rl.question('\nEnter the name of the item would you like to buy: ', (name) => {
+    // Based on name, return the first matched item or undefined;
+    const item = grocery.find((i) => i.name.toLowerCase() === name.toLowerCase());
+    // when the name is available in grocery
     if (item) {
-      rl.question(`How many ${item.name} do you want to buy? Available: ${item.quantity}: `, (quantity) => {
+      rl.question(`How many ${item.name} would you like to buy? Available: ${item.quantity}: `, (quantity) => {
         quantity = parseInt(quantity);
-        // legal input && buyable
+        // legal && buyable quantity
         if (!isNaN(quantity) && quantity > 0 && quantity <= item.quantity) {
-          shoppingList.push({ name: item.name, quantity: quantity });
-          console.log(`Added ${quantity} ${item.name}(s) to your selection.`);
+          shoppingList.push({ name: item.name, price: item.price, quantity: quantity });
+          console.log(`Added ${quantity} ${item.name}(s) to your cart.`);
+          // update availability
+          item.quantity = item.quantity - quantity;
         } else {
           console.log('Invalid quantity.');
         }
@@ -50,25 +62,30 @@ function askForInput() {
 
 // add more items or retry when input is illegal
 function askToContinue() {
-  rl.question('Would you like to add another item? (yes/no): ', (answer) => {
+  rl.question('\nWould you like to add another item? (yes/no): ', (answer) => {
+    // continue/finish input, show shoppingList at the end
     if (answer.toLowerCase() === 'yes') {
       askForInput();
     } else {
-      showUserSelections();
+      showShoppingList();
       rl.close();
     }
   });
 }
 
-function showUserSelections() {
-  console.log('\nYour selections:');
-  shoppingList.forEach((selection, index) => {
-    console.log(`${index + 1}. ${selection.name}: ${selection.quantity} item(s)`);
+function showShoppingList() {
+  console.log('\nYour cart:');
+  let total = 0;
+  shoppingList.forEach((item, index) => {
+    total += item.price * item.quantity;
+    console.log(`${index + 1}. ${item.name}: ${item.quantity} item(s)`);
   });
+  console.log(`total:  $${total}`);
 }
 
 // Start the process
 showGroceryList();
+showOriginalShoppingList();
 askForInput();
 
 /*
