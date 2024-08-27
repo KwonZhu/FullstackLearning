@@ -68,7 +68,7 @@ function askToContinue() {
       askForInput();
     } else {
       showShoppingList();
-      rl.close();
+      askToDelete();
     }
   });
 }
@@ -83,52 +83,36 @@ function showShoppingList() {
   console.log(`total:  $${total}`);
 }
 
+function askToDelete() {
+  rl.question('\nWould you like to modify your cart? (yes/no): ', (answer) => {
+    if (answer.toLowerCase() === 'yes') {
+      rl.question('\nWhich item would you like to delete? (Enter the number)', (cartNumber) => {
+        cartNumber = parseInt(cartNumber);
+        // legal && within bounds of shoppingList
+        if (!isNaN(cartNumber) && cartNumber > 0 && cartNumber <= shoppingList.length) {
+          deleteShoppingListItem(cartNumber);
+        } else {
+          console.log('Invalid number.');
+          askToDelete();
+          // multiple times incorrect number
+          // return to avoid closing rl prematurely
+          return;
+        }
+        rl.close();
+        showShoppingList();
+      });
+    } else {
+      rl.close();
+      showShoppingList();
+    }
+  });
+}
+
+function deleteShoppingListItem(cartNumber) {
+  shoppingList.splice(cartNumber - 1, 1);
+}
+
 // Start the process
 showGroceryList();
 showOriginalShoppingList();
 askForInput();
-
-/*
-function showGrocery() {
-  for (let index = 0; index < grocery.length; index++) {
-    console.log(index + '. ' + grocery[index].name + ' | price ' + grocery[index].price);
-  }
-}
-
-showGrocery();
-
-function addToList(goods) {
-  if (goods) {
-    // when goods goods is valid & in not in shoppingList
-    if (shoppingList.findIndex((i) => i === goods) == -1) {
-      shoppingList.push(goods);
-      return true;
-    }
-    return console.log(`Sorry, ${goods} is already in shopping cart`);
-  }
-  return false;
-}
-addToList('');
-addToList('carrot');
-addToList('chicken');
-addToList('chicken');
-console.log(shoppingList);
-
-function deleteGoods() {
-  if (shoppingList.length > 0) {
-    shoppingList.pop();
-  }
-}
-deleteGoods();
-console.log(shoppingList);
-
-function checkShoppingList() {
-  if (shoppingList.length > 5) {
-    console.log('Sorry, your shopping cart is full');
-  }
-  for (let index = 0; index < shoppingList.length; index++) {
-    console.log(index + 1 + '. ' + shoppingList[index]);
-  }
-}
-checkShoppingList();
-*/
