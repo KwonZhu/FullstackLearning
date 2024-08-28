@@ -7,6 +7,7 @@ function additionWithoutRest(a, b) {
 
 // with rest operator
 function additionWithRest(...numbers) {
+  //arr.reduce((previousValue, currentValue) => previousValue + currentValue) return the accumulated sum
   return numbers.reduce((acc, curr) => acc + curr, 0);
 }
 
