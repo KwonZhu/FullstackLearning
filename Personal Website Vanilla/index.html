@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kwon Zhu</title>
+  </head>
+  <body>
+    <main>
+      <!-- Header -->
+      <header>
+        <nav>
+          <div class="brand"><a href="#home">&lt;KZ&gt;</a></div>
+          <ul>
+            <li><a class="nav__items" href="#home">Home</a></li>
+            <li><a class="nav__items" href="#skills">Skills</a></li>
+            <li><a class="nav__items" href="#projects">Projects</a></li>
+            <li><a class="nav__items" href="#contact">Contact</a></li>
+            <li><a class="nav__items">Change Theme</a></li>
+          </ul>
+          <button></button>
+        </nav>
+      </header>
+      <!-- Home Subpage -->
+      <section class="home" id="home">
+        <div class="container">
+          <div class="home__title">
+            <h1>
+              Hi there, I'm <span>Kwon Zhu</span><br />
+              <span>Junior software engineer</span><span>Full stack developer</span>
+            </h1>
+            <p>This is my personal website, and I hope you could enjoy it!</p>
+          </div>
+          <div class="home__contacts">
+            <div class="social-media">
+              <a href="https://www.linkedin.com/in/kwonzhu" target="_blank">Linkedin</a>
+              <a href="https://github.com/KwonZhu">github</a>
+            </div>
+            <button><a href="#contact">Contact Me</a></button>
+          </div>
+          <div class="home__profile-photo">
+            <img src="" alt="profile photo" />
+          </div>
+        </div>
+      </section>
+      <!-- Skills Subpage -->
+      <section class="skills" id="skills">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="skills__info">
+            <p>
+              I'm a technology enthusiast passionate about web development. Below are the technologies I have knowledge
+              of:
+            </p>
+            <div class="skills__info__technologies">
+              <div class="skills__info__technologies-card">
+                <img src="" alt="HTML5" />
+                <span>HTML5</span>
+              </div>
+              <div class="skills__info__technologies-card">
+                <img src="" alt="CSS" />
+                <span>CSS</span>
+              </div>
+              <div class="skills__info__technologies-card">
+                <img src="" alt="Sass" />
+                <span>Sass</span>
+              </div>
+              <div class="skills__info__technologies-card">
+                <img src="" alt="JavaScript" />
+                <span>JavaScript</span>
+              </div>
+              <div class="skills__info__technologies-card">
+                <img src="" alt="Bootstrap 5.0" />
+                <span>Bootstrap 5.0</span>
+              </div>
+              <div class="skills__info__technologies-card">
+                <img src="" alt="Git" />
+                <span>Git</span>
+              </div>
+              <div class="skills__info__technologies-card">
+                <img src="" alt="NodeJs" />
+                <span>NodeJs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Projects Subpage -->
+      <section class="projects" id="projects">
+        <div class="container">
+          <h2>Projects</h2>
+          <div class="projects__info">
+            <p>Dive into the projects developed so far</p>
+            <div class="projects-card">
+              <div class="projects-card__image"><img src="" alt="project image" /></div>
+              <h3 class="projects-card__title">Portfolio</h3>
+              <p class="projects-card__content">This is a personal website</p>
+              <p class="projects-card__tech">Tech: HTML, Scss, Javascript</p>
+              <div><a href="https://www.linkedin.com/in/kwonzhu" target="_blank">Github</a></div>
+            </div>
+            <div class="projects-card">
+              <div class="projects-card__image"><img src="" alt="project image" /></div>
+              <h3 class="projects-card__title">Weather App</h3>
+              <p class="projects-card__content">This is a Weather App</p>
+              <p class="projects-card__tech">Tech: HTML, Scss, Javascript, React</p>
+              <div><a href="https://www.linkedin.com/in/kwonzhu" target="_blank">Github</a></div>
+            </div>
+            <div class="projects-card">
+              <div class="projects-card__image"><img src="" alt="project image" /></div>
+              <h3 class="projects-card__title">P3</h3>
+              <p class="projects-card__content">This is a P3</p>
+              <p class="projects-card__tech">Tech: HTML, Scss, Javascript, React, .Net</p>
+              <div><a href="https://www.linkedin.com/in/kwonzhu" target="_blank">Github</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Subpage -->
+      <section class="contact" id="contact">
+        <div class="container">
+          <form action="" method="">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              class="text-input"
+              autocomplete="off"
+              placeholder="Please enter your name"
+              required
+            /><br />
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              class="text-input"
+              autocomplete="off"
+              placeholder="Please enter your email address"
+              required
+              pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+            /><br />
+            <label for="message"></label>
+            <textarea
+              id="message"
+              name="message"
+              class="text-input"
+              cols="30"
+              rows="10"
+              maxlength="300"
+              placeholder="Please leave your message here"
+              required
+            ></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <nav></nav>
+  </body>
+</html>
