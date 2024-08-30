@@ -16,4 +16,24 @@ git config --gobal core.editor "code --wait"
   > This command will move the HEAD to the specified commit, allowing you to view the state of the repository at that point. However, this puts you in a "detached HEAD" state, meaning you're not on any branch. If you want to make changes or create a new branch from that commit, you can do so after checking it out.
 
 - Compare git log -p and git log
+
   > The -p flag stands for "patch," and it shows the changes made in each commit, line by line.
+
+- How to keep dev branch linear
+
+1.  Regularly keep master Updated //ensure master is up-to-date that it incorporates any changes have made from others
+    git checkout master
+    git fetch dev //git fetch origin
+    git pull dev //git pull origin dev
+2.  Periodically rebase feature onto Updated master
+    git checkout feature
+    git rebase master
+    2.5. If there are conflicts, resolve them and continue the rebase
+    git rebase --continue
+    2.6-2.9 Regularly & Periodically 重复 1 和 2
+3.  Final rebase feature onto dev before push //when feature is ready, rebase it onto the latest develop to ensure it integrates smoothly
+    git fetch dev //git fetch origin
+    git rebase dev //git rebase origin/develop
+4.  Push to dev
+    Option 1: Push directly to develop
+    Option 2: Push & Create a Pull Request
