@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+}
+
+// smoothly animate the scroll position, instead of a straight jump
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  z-index: 1;
+  height: 80px;
+  box-shadow: 0 1px 0 #f9fafb;
+  width: 100%;
+}
+nav {
+  height: 80px;
+  padding: 0 20px;
+  ul {
+    list-style: none;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    li:first-child {
+      flex-grow: 1;
+    }
+    .nav__items {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
