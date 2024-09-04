@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
   position: relative;
 }
 
@@ -12,55 +12,155 @@ html {
   scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 button {
   outline: none;
   border: none;
-  padding: 0;
+  padding: none;
   background: transparent;
   cursor: pointer;
 }
 
-header {
+%font-gradient-shared {
+  background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
+  // defines how far the background (color or image) should extend within an element
+  // will only render the background where there's text
+  background-clip: text;
+  color: transparent;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+// =========================================================================
+
+nav {
   position: fixed;
   z-index: 1;
   height: 80px;
   box-shadow: 0 1px 0 #f9fafb;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 0 20px;
-  .brand {
+  .logo {
     flex-grow: 1;
+    a {
+      font-size: 24px;
+      font-weight: 500;
+      @extend %font-gradient-shared;
+    }
   }
-  nav {
-    ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      .nav-item {
-        text-decoration: none;
-        cursor: pointer;
-        color: #666666;
-        padding: 13px 16px;
-        &:hover {
-          background-color: #d9d9d9;
-          opacity: 0.9;
-          border-radius: 8px;
-        }
+  ul {
+    list-style: none;
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    .navbar__item {
+      color: #666666;
+      padding: 13px 16px;
+      &:hover {
+        background-color: #d9d9d9;
+        opacity: 0.9;
+        border-radius: 8px;
       }
+    }
+    .navbar__item--active {
+      color: #742df6;
+      @extend %font-gradient-shared;
     }
   }
   .menu-btn {
     display: none;
   }
 }
-section {
-  min-height: 100vh;
-  width: 100%;
+
+.home {
+  justify-content: space-around;
+}
+.home-info {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  &__title {
+    h1 {
+      font-weight: 500;
+      color: #42446e;
+      font-size: 32px;
+      .name {
+        font-size: 36px;
+        font-weight: 700;
+        @extend %font-gradient-shared;
+      }
+      .animation {
+        display: block;
+        font-weight: 700;
+        color: #42446e;
+        font-size: 26px;
+        margin: 15px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        border-right: 2px solid #42446e;
+        animation: mark 0.5s step-end infinite, write 6s steps(22, end) infinite;
+        @keyframes mark {
+          50% {
+            border-right: transparent;
+          }
+        }
+
+        @keyframes write {
+          20% {
+            width: 22ch;
+          }
+          70% {
+            width: 22ch;
+          }
+          85% {
+            width: 0;
+          }
+          100% {
+            width: 0;
+          }
+        }
+      }
+    }
+    p {
+      color: #666666;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  }
+  &__contacts {
+    .social-media {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 160px;
+      margin-bottom: 10px;
+      .fa-linkedin {
+        font-size: 28px;
+        color: #0a66c2;
+      }
+      .fa-github {
+        font-size: 28px;
+        color: #000;
+      }
+    }
+  }
+}
+.test {
+  width: 300px;
+  height: 300px;
+  font-size: 500px;
+  color: red;
+  background-color: lightblue;
 }
