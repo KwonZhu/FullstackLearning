@@ -18,73 +18,82 @@
     <main>
       <!-- Header -->
       <header>
-        <div class="brand"><a href="#top">&lt;KZ&gt;</a></div>
         <nav>
-          <ul>
-            <li><a class="nav-item" href="#home">Home</a></li>
-            <li><a class="nav-item" href="#skills">Skills</a></li>
-            <li><a class="nav-item" href="#projects">Projects</a></li>
-            <li><a class="nav-item" href="#contact">Contact</a></li>
-            <li><button class="nav-item">Change Theme</button></li>
-          </ul>
+          <div class="logo"><a href="#top">&lt;KZ&gt;</a></div>
+          <div class="navbar">
+            <ul>
+              <li><a class="navbar__item navbar__item--active" href="#home">Home</a></li>
+              <li><a class="navbar__item" href="#skills">Skills</a></li>
+              <li><a class="navbar__item" href="#projects">Projects</a></li>
+              <li><a class="navbar__item" href="#contact">Contact</a></li>
+              <li><button class="navbar__item">Change Theme</button></li>
+            </ul>
+          </div>
+          <div class="menu-btn"><button>hamburger</button></div>
         </nav>
-        <div class="menu-btn"><button>hamburger</button></div>
       </header>
       <!-- Home Subpage -->
       <section class="home" id="home">
-        <div class="home__title">
-          <h1>
-            Hi there, I'm <span>Kwon Zhu</span><br />
-            <span>Junior software engineer</span><span>Full stack developer</span>
-          </h1>
-          <p>This is my personal website, and I hope you could enjoy it!</p>
-        </div>
-        <div class="home__contacts">
-          <div class="social-media">
-            <a href="https://www.linkedin.com/in/kwonzhu" target="_blank">Linkedin</a>
-            <a href="https://github.com/KwonZhu">github</a>
+        <div class="home-info">
+          <div class="home-info__title">
+            <h1>
+              Hi there, I'm <span class="name">Kwon Zhu</span>
+              <span class="animation">Junior Full stack developer</span>
+            </h1>
+            <p>This is my personal website, and I hope you could enjoy it!</p>
           </div>
-          <button><a href="#contact">Contact Me</a></button>
-          <button>Resume</button>
+          <div class="home-info__contacts">
+            <div class="social-media">
+              <a class="linkedin" href="https://www.linkedin.com/in/kwonzhu" target="_blank">
+                <i class="fa-brands fa-linkedin"></i
+              ></a>
+              <a class="github" href="https://github.com/KwonZhu" target="_blank"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+            </div>
+            <button><a href="#contact">Contact Me</a></button>
+            <button><a href="aa">Resume</a></button>
+          </div>
         </div>
-        <div class="home__profile-photo">
+        <div class="profile-photo">
           <img src="" alt="profile photo" />
         </div>
       </section>
       <!-- Skills Subpage -->
       <section class="skills" id="skills">
         <h2>Skills</h2>
-        <div class="skills__info">
+        <div class="skills-info">
           <p>
-            I'm a technology enthusiast passionate about web development. Below are the technologies I have knowledge
-            of:
+            I'm a technology enthusiast passionate about web development. I am a person who enjoys learning and growing
+            in the technology stack, and I look forward to the challenge of improving my coding skills. Here are the
+            techniques I know about of:
           </p>
-          <div class="skills__info__technologies">
-            <div class="skills__info__technologies-card">
+          <div class="skills-info__technologies">
+            <div class="skills-info__technologies__card">
               <img src="" alt="HTML5" />
               <span>HTML5</span>
             </div>
-            <div class="skills__info__technologies-card">
+            <div class="skills-info__technologies__card">
               <img src="" alt="CSS" />
               <span>CSS</span>
             </div>
-            <div class="skills__info__technologies-card">
+            <div class="skills-info__technologies__card">
               <img src="" alt="Sass" />
               <span>Sass</span>
             </div>
-            <div class="skills__info__technologies-card">
+            <div class="skills-info__technologies__card">
               <img src="" alt="JavaScript" />
               <span>JavaScript</span>
             </div>
-            <div class="skills__info__technologies-card">
+            <div class="skills-info__technologies__card">
               <img src="" alt="Bootstrap 5.0" />
               <span>Bootstrap 5.0</span>
             </div>
-            <div class="skills__info__technologies-card">
+            <div class="skills-info__technologies__card">
               <img src="" alt="Git" />
               <span>Git</span>
             </div>
-            <div class="skills__info__technologies-card">
+            <div class="skills-info__technologies__card">
               <img src="" alt="NodeJs" />
               <span>NodeJs</span>
             </div>
@@ -156,7 +165,9 @@
         </form>
       </section>
     </main>
+    <div class="test"><p>Hello</p></div>
     <!-- Footer -->
     <footer>© 2024 All rights reserved. Designed by Kwon Zhu.</footer>
   </body>
+  <script src="https://kit.fontawesome.com/f8579337f5.js" crossorigin="anonymous"></script>
 </html>

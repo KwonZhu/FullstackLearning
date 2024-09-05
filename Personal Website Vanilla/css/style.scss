@@ -38,6 +38,7 @@ section {
   width: 100%;
   display: flex;
   align-items: center;
+  padding: 5px 20px;
 }
 
 // =========================================================================
@@ -54,7 +55,7 @@ nav {
   .logo {
     flex-grow: 1;
     a {
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 500;
       @extend %font-gradient-shared;
     }
@@ -85,74 +86,150 @@ nav {
 
 .home {
   justify-content: space-around;
-}
-.home-info {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  &__title {
-    h1 {
-      font-weight: 500;
-      color: #42446e;
-      font-size: 32px;
-      .name {
-        font-size: 36px;
-        font-weight: 700;
-        @extend %font-gradient-shared;
-      }
-      .animation {
-        display: block;
-        font-weight: 700;
+  .home-info {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    &__title {
+      h1 {
+        font-weight: 500;
         color: #42446e;
-        font-size: 26px;
-        margin: 15px 0;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 0;
-        border-right: 2px solid #42446e;
-        animation: mark 0.5s step-end infinite, write 6s steps(22, end) infinite;
-        @keyframes mark {
-          50% {
-            border-right: transparent;
-          }
+        font-size: 2rem;
+        .name {
+          font-size: 2.25rem;
+          font-weight: 700;
+          @extend %font-gradient-shared;
         }
-
-        @keyframes write {
-          20% {
-            width: 22ch;
+        .animation {
+          display: block;
+          font-weight: 700;
+          color: #42446e;
+          font-size: 1.5rem;
+          margin: 15px 0;
+          white-space: nowrap; // no wrap when deleting
+          overflow: hidden; //Hide words that have not been typed yet
+          width: 0;
+          border-right: 2px solid #42446e; //mimicking a typing cursor
+          animation: mark 0.5s step-end infinite, write 5s steps(27, end) infinite;
+          //control the blinking cursor effect
+          @keyframes mark {
+            //At the 50% mark of the animation duration, the border-right becomes transparent.
+            50% {
+              border-right: transparent;
+            }
           }
-          70% {
-            width: 22ch;
-          }
-          85% {
-            width: 0;
-          }
-          100% {
-            width: 0;
+          //control the typing effect
+          @keyframes write {
+            //At 20% of the animation, the width expands to 22 characters
+            20% {
+              width: 22ch;
+            }
+            //keeping the text fully visible until 70% of the animation.
+            65% {
+              width: 22ch;
+            }
+            //shrinks the width back to 0
+            85% {
+              width: 0;
+            }
+            100% {
+              width: 0;
+            }
           }
         }
       }
+      p {
+        color: #666666;
+        font-size: 1.1rem;
+        line-height: 1.5;
+      }
     }
-    p {
-      color: #666666;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-  }
-  &__contacts {
-    .social-media {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      width: 160px;
-      margin-bottom: 10px;
+    &__contacts {
+      .social-media {
+        display: flex;
+        justify-content: space-evenly;
+        width: 120px;
+        margin: 10px 0;
+      }
       .fa-linkedin {
-        font-size: 28px;
+        font-size: 1.75rem;
         color: #0a66c2;
       }
       .fa-github {
-        font-size: 28px;
+        font-size: 1.75rem;
         color: #000;
+      }
+      button {
+        width: 120px;
+        font-weight: 500;
+        padding: 12px;
+        border-radius: 8px;
+        background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
+        opacity: 0.9;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      a {
+        color: #fff;
+      }
+    }
+  }
+  .profile-photo {
+    width: 30%;
+    display: flex;
+    img {
+      width: 250px;
+      height: 250px;
+      animation: float 5s ease-in-out infinite;
+      box-shadow: 0 5px 15px;
+      border-radius: 50%;
+    }
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-30px);
+      }
+    }
+  }
+}
+
+.skills {
+  justify-content: center;
+  flex-direction: column;
+  h2 {
+    font-weight: 500;
+    color: #42446e;
+    font-size: 2rem;
+  }
+  .skills-info {
+    width: 100%;
+    margin-top: 12px;
+    p {
+      hyphens: auto; //Adds hyphenation '-' where needed
+      color: #666666;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    &__technologies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      &__card {
+        display: flex;
+        align-items: center;
+        width: 200px;
+        height: 80px;
+        background-color: #f9fafb;
+        padding: 12px 12px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        margin: 20px 0 10px 0;
+        transition: opacity 0.6s ease-out;
       }
     }
   }

@@ -20,7 +20,7 @@ button {
   background: transparent;
   cursor: pointer; }
 
-nav .logo a, nav ul .navbar__item--active, .home-info__title h1 .name {
+nav .logo a, nav ul .navbar__item--active, .home .home-info__title h1 .name {
   background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
   background-clip: text;
   color: transparent; }
@@ -29,7 +29,8 @@ section {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  padding: 5px 20px; }
 
 nav {
   position: fixed;
@@ -43,7 +44,7 @@ nav {
   nav .logo {
     flex-grow: 1; }
     nav .logo a {
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 500; }
   nav ul {
     list-style: none;
@@ -64,57 +65,111 @@ nav {
 
 .home {
   justify-content: space-around; }
-
-.home-info {
-  display: flex;
-  flex-direction: column;
-  width: 50%; }
-  .home-info__title h1 {
-    font-weight: 500;
-    color: #42446e;
-    font-size: 32px; }
-    .home-info__title h1 .name {
-      font-size: 36px;
-      font-weight: 700; }
-    .home-info__title h1 .animation {
-      display: block;
-      font-weight: 700;
+  .home .home-info {
+    display: flex;
+    flex-direction: column;
+    width: 50%; }
+    .home .home-info__title h1 {
+      font-weight: 500;
       color: #42446e;
-      font-size: 26px;
-      margin: 15px 0;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      border-right: 2px solid #42446e;
-      animation: mark 0.5s step-end infinite, write 6s steps(22, end) infinite; }
+      font-size: 2rem; }
+      .home .home-info__title h1 .name {
+        font-size: 2.25rem;
+        font-weight: 700; }
+      .home .home-info__title h1 .animation {
+        display: block;
+        font-weight: 700;
+        color: #42446e;
+        font-size: 1.5rem;
+        margin: 15px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        border-right: 2px solid #42446e;
+        animation: mark 0.5s step-end infinite, write 5s steps(27, end) infinite; }
 @keyframes mark {
   50% {
     border-right: transparent; } }
 @keyframes write {
   20% {
     width: 22ch; }
-  70% {
+  65% {
     width: 22ch; }
   85% {
     width: 0; }
   100% {
     width: 0; } }
-  .home-info__title p {
-    color: #666666;
-    font-size: 18px;
-    line-height: 1.5; }
-  .home-info__contacts .social-media {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 160px;
-    margin-bottom: 10px; }
-    .home-info__contacts .social-media .fa-linkedin {
-      font-size: 28px;
+    .home .home-info__title p {
+      color: #666666;
+      font-size: 1.1rem;
+      line-height: 1.5; }
+    .home .home-info__contacts .social-media {
+      display: flex;
+      justify-content: space-evenly;
+      width: 120px;
+      margin: 10px 0; }
+    .home .home-info__contacts .fa-linkedin {
+      font-size: 1.75rem;
       color: #0a66c2; }
-    .home-info__contacts .social-media .fa-github {
-      font-size: 28px;
+    .home .home-info__contacts .fa-github {
+      font-size: 1.75rem;
       color: #000; }
+    .home .home-info__contacts button {
+      width: 120px;
+      font-weight: 500;
+      padding: 12px;
+      border-radius: 8px;
+      background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
+      opacity: 0.9; }
+      .home .home-info__contacts button:hover {
+        opacity: 1; }
+    .home .home-info__contacts a {
+      color: #fff; }
+  .home .profile-photo {
+    width: 30%;
+    display: flex; }
+    .home .profile-photo img {
+      width: 250px;
+      height: 250px;
+      animation: float 5s ease-in-out infinite;
+      box-shadow: 0 5px 15px;
+      border-radius: 50%; }
+@keyframes float {
+  0%,
+      100% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(-30px); } }
+.skills {
+  justify-content: center;
+  flex-direction: column; }
+  .skills h2 {
+    font-weight: 500;
+    color: #42446e;
+    font-size: 2rem; }
+  .skills .skills-info {
+    width: 100%;
+    margin-top: 12px; }
+    .skills .skills-info p {
+      hyphens: auto;
+      color: #666666;
+      font-size: 1.1rem;
+      line-height: 1.5; }
+    .skills .skills-info__technologies {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; }
+      .skills .skills-info__technologies__card {
+        display: flex;
+        align-items: center;
+        width: 200px;
+        height: 80px;
+        background-color: #f9fafb;
+        padding: 12px 12px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        margin: 20px 0 10px 0;
+        transition: opacity 0.6s ease-out; }
 
 .test {
   width: 300px;
