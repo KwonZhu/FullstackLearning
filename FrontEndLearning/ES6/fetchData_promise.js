@@ -1,14 +1,28 @@
+// function fetchData(url) {
+//   return new Promise((resolve, reject) => {
+//     if (url) {
+//       setTimeout(() => {
+//         console.log('When valid URL');
+//         resolve(`Data from ${url}`);
+//       }, 2000);
+//     } else {
+//       console.log('When url is empty or nor provide:');
+//       reject(`Invalid URL`);
+//     }
+//   });
+// }
+
 function fetchData(url) {
   return new Promise((resolve, reject) => {
-    if (url) {
-      setTimeout(() => {
-        console.log('When valid URL');
-        resolve(`Data from ${url}`);
-      }, 2000);
-    } else {
+    if (!url) {
       console.log('When url is empty or nor provide:');
       reject(`Invalid URL`);
+      return;
     }
+    setTimeout(() => {
+      console.log('When valid URL');
+      resolve(`Data from ${url}`);
+    }, 2000);
   });
 }
 

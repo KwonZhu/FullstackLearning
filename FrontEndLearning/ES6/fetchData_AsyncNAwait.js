@@ -21,5 +21,9 @@ async function loadData(url) {
   }
 }
 
-loadData('');
-loadData('https://www.google.com/');
+// await loadData('');
+// error: await is only valid in async functions and the top level bodies of modules
+loadData(''); // must has await
+// await loadData('https://www.google.com/');
+// error: await is only valid in async functions and the top level bodies of modules
+loadData('https://www.google.com/'); //await loadData('https://www.google.com/'); must has await
