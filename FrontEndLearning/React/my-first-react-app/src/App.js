@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Greeting from './Greeting';
+import CourseCard from './components/CourseCard';
 
 function App() {
   return (
     <div className="App">
-      <Greeting />
+      <CourseCard title="TypeScript Basic" description="This is awesome" lessons={9} />
+      <CourseCard title="TypeScript Basic" description="This is bad" lessons={999} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
