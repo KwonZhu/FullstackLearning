@@ -70,6 +70,7 @@ import './style.css';
 
 // state
 function CourseCard(props) {
+  //function CourseCard({title, description,lessons}){
   const [isEnrolled, setIsEnrolled] = useState(false);
 
   const handleEnroll = () => {
@@ -79,8 +80,11 @@ function CourseCard(props) {
   return (
     <div className="my-class">
       <h2>{props.title}</h2>
+      {/* <h2>{title}</h2> */}
       <p>{props.description}</p>
+      {/* <p>{description}</p> */}
       <p>{props.lessons} lectures</p>
+      {/* <p>{lessons} lectures</p> */}
 
       <button onClick={handleEnroll} disabled={isEnrolled}>
         {isEnrolled ? 'Enrolled' : 'Enroll now'}
