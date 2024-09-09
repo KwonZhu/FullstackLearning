@@ -20,7 +20,7 @@ button {
   background: transparent;
   cursor: pointer; }
 
-nav .logo a, nav ul .navbar__item--active, .home .home-info__title h1 .name {
+nav .logo a, .home .home-info__title h1 .name {
   background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
   background-clip: text;
   color: transparent; }
@@ -54,13 +54,17 @@ nav {
     align-items: center; }
     nav ul .navbar__item {
       color: #666666;
-      padding: 13px 16px; }
+      padding: 13px 16px;
+      opacity: 0.6;
+      transition: opacity 0.3 ease-in-out; }
       nav ul .navbar__item:hover {
         background-color: #d9d9d9;
-        opacity: 0.9;
+        opacity: 1;
+        transition: opacity 0.3 ease-in-out;
         border-radius: 8px; }
     nav ul .navbar__item--active {
-      color: #742df6; }
+      opacity: 1;
+      transition: opacity 0.3 ease-in-out; }
   nav .menu-btn {
     display: none; }
 
@@ -143,7 +147,6 @@ nav {
   50% {
     transform: translateY(-30px); } }
 .skills {
-  justify-content: center;
   flex-direction: column; }
   .skills h2 {
     font-weight: 500;
@@ -180,11 +183,58 @@ nav {
           margin-left: 20px;
           font-weight: 500; }
 
-.test {
-  width: 300px;
-  height: 300px;
-  font-size: 500px;
-  color: red;
-  background-color: lightblue; }
+.projects {
+  flex-direction: column; }
+  .projects h2 {
+    font-weight: 500;
+    color: #42446e;
+    font-size: 2rem; }
+  .projects .projects-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 12px; }
+    .projects .projects-info__intro {
+      display: flex;
+      justify-content: center;
+      color: #666666;
+      font-size: 1.1rem;
+      line-height: 1.5; }
+    .projects .projects-info__card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 325px;
+      height: 500px;
+      background-color: #f9fafb;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+      margin-top: 20px; }
+      .projects .projects-info__card__image img {
+        width: 325px;
+        height: 200px;
+        border-radius: 8px 8px 0 0; }
+      .projects .projects-info__card__title {
+        margin: 12px 0;
+        font-size: 1.3rem; }
+      .projects .projects-info__card__content {
+        color: #666666;
+        line-height: 1.5; }
+      .projects .projects-info__card__tech {
+        color: #666666;
+        line-height: 1.5; }
+      .projects .projects-info__card__repository a {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center; }
+      .projects .projects-info__card__repository i {
+        font-size: 1.6rem;
+        color: #000;
+        margin-right: 6px; }
+      .projects .projects-info__card__repository span {
+        color: #000; }
 
 /*# sourceMappingURL=style.css.map */

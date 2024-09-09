@@ -69,15 +69,21 @@ nav {
     .navbar__item {
       color: #666666;
       padding: 13px 16px;
+      opacity: 0.6;
+      transition: opacity 0.3 ease-in-out;
       &:hover {
         background-color: #d9d9d9;
-        opacity: 0.9;
+        opacity: 1;
+        transition: opacity 0.3 ease-in-out;
+        // opacity: 0.9;
         border-radius: 8px;
       }
     }
     .navbar__item--active {
-      color: #742df6;
-      @extend %font-gradient-shared;
+      opacity: 1;
+      transition: opacity 0.3 ease-in-out;
+      // color: #742df6;
+      // @extend %font-gradient-shared;
     }
   }
   .menu-btn {
@@ -201,7 +207,6 @@ nav {
 }
 
 .skills {
-  justify-content: center;
   flex-direction: column;
   h2 {
     font-weight: 500;
@@ -212,7 +217,7 @@ nav {
     width: 100%;
     margin-top: 12px;
     p {
-      hyphens: auto; //Adds hyphenation '-' where needed
+      hyphens: auto; //Adds hyphenation '-' where needed to make
       color: #666666;
       font-size: 1.1rem;
       line-height: 1.5;
@@ -245,10 +250,70 @@ nav {
     }
   }
 }
-.test {
-  width: 300px;
-  height: 300px;
-  font-size: 500px;
-  color: red;
-  background-color: lightblue;
+.projects {
+  flex-direction: column;
+  h2 {
+    font-weight: 500;
+    color: #42446e;
+    font-size: 2rem;
+  }
+  .projects-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 12px;
+    &__intro {
+      display: flex;
+      justify-content: center;
+      color: #666666;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    &__card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 325px;
+      height: 500px;
+      background-color: #f9fafb;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+      margin-top: 20px;
+      &__image img {
+        width: 325px;
+        height: 200px;
+        border-radius: 8px 8px 0 0;
+      }
+      &__title {
+        margin: 12px 0;
+        font-size: 1.3rem;
+      }
+      &__content {
+        color: #666666;
+        line-height: 1.5;
+      }
+      &__tech {
+        color: #666666;
+        line-height: 1.5;
+      }
+      &__repository {
+        a {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+        i {
+          font-size: 1.6rem;
+          color: #000;
+          margin-right: 6px;
+        }
+        span {
+          color: #000;
+        }
+      }
+    }
+  }
 }
