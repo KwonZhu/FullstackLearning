@@ -257,21 +257,20 @@ nav {
     color: #42446e;
     font-size: 2rem;
   }
-  .projects-info {
+  &__intro {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
+    color: #666666;
+    font-size: 1.1rem;
+    line-height: 1.5;
     margin-top: 12px;
-    &__intro {
-      display: flex;
-      justify-content: center;
-      color: #666666;
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
-    &__card {
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    .projects-card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -281,7 +280,11 @@ nav {
       padding: 10px;
       border-radius: 8px;
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-      margin-top: 20px;
+      margin: 20px 20px 0 0;
+      opacity: 0.8;
+      &:hover {
+        opacity: 1;
+      }
       &__image img {
         width: 325px;
         height: 200px;
@@ -304,6 +307,7 @@ nav {
           display: flex;
           justify-content: flex-end;
           align-items: center;
+          margin-right: 15px;
         }
         i {
           font-size: 1.6rem;

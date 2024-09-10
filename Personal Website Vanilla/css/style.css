@@ -189,20 +189,19 @@ nav {
     font-weight: 500;
     color: #42446e;
     font-size: 2rem; }
-  .projects .projects-info {
+  .projects__intro {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
+    color: #666666;
+    font-size: 1.1rem;
+    line-height: 1.5;
     margin-top: 12px; }
-    .projects .projects-info__intro {
-      display: flex;
-      justify-content: center;
-      color: #666666;
-      font-size: 1.1rem;
-      line-height: 1.5; }
-    .projects .projects-info__card {
+  .projects__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%; }
+    .projects__list .projects-card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -212,29 +211,33 @@ nav {
       padding: 10px;
       border-radius: 8px;
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-      margin-top: 20px; }
-      .projects .projects-info__card__image img {
+      margin: 20px 20px 0 0;
+      opacity: 0.8; }
+      .projects__list .projects-card:hover {
+        opacity: 1; }
+      .projects__list .projects-card__image img {
         width: 325px;
         height: 200px;
         border-radius: 8px 8px 0 0; }
-      .projects .projects-info__card__title {
+      .projects__list .projects-card__title {
         margin: 12px 0;
         font-size: 1.3rem; }
-      .projects .projects-info__card__content {
+      .projects__list .projects-card__content {
         color: #666666;
         line-height: 1.5; }
-      .projects .projects-info__card__tech {
+      .projects__list .projects-card__tech {
         color: #666666;
         line-height: 1.5; }
-      .projects .projects-info__card__repository a {
+      .projects__list .projects-card__repository a {
         display: flex;
         justify-content: flex-end;
-        align-items: center; }
-      .projects .projects-info__card__repository i {
+        align-items: center;
+        margin-right: 15px; }
+      .projects__list .projects-card__repository i {
         font-size: 1.6rem;
         color: #000;
         margin-right: 6px; }
-      .projects .projects-info__card__repository span {
+      .projects__list .projects-card__repository span {
         color: #000; }
 
 /*# sourceMappingURL=style.css.map */
