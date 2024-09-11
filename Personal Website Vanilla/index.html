@@ -154,35 +154,24 @@
       </section>
       <!-- Contact Subpage -->
       <section class="contact" id="contact">
+        <h2>Contact</h2>
         <form action="" method="">
-          <label for="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            class="text-input"
-            autocomplete="off"
-            placeholder="Please enter your name"
-            required
-          /><br />
-          <label for="email">Email:</label>
+          <input type="text" name="name" class="text-input" placeholder="first name" required /><br />
           <input
             type="email"
-            id="email"
+            name="email"
             class="text-input"
-            autocomplete="off"
-            placeholder="Please enter your email address"
+            placeholder="email address"
             required
             pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
           /><br />
-          <label for="message"></label>
           <textarea
-            id="message"
             name="message"
             class="text-input"
             cols="30"
             rows="10"
             maxlength="300"
-            placeholder="Please leave your message here"
+            placeholder="Please leave message here"
             required
           ></textarea>
           <button type="submit">Send</button>

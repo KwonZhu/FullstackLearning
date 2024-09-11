@@ -57,7 +57,6 @@ nav {
     flex-grow: 1;
     a {
       font-size: 1.5rem;
-      font-weight: 500;
       @extend %font-gradient-shared;
     }
   }
@@ -169,7 +168,6 @@ nav {
       }
       button {
         width: 120px;
-        font-weight: 500;
         padding: 12px;
         border-radius: 8px;
         background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
@@ -234,7 +232,7 @@ nav {
         background-color: #f9fafb;
         padding: 12px 12px;
         border-radius: 8px;
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
         margin: 20px 0 10px 0;
         transition: opacity 0.6s ease-out;
         img {
@@ -244,7 +242,6 @@ nav {
         span {
           display: inline-block;
           margin-left: 20px;
-          font-weight: 500;
         }
       }
     }
@@ -263,7 +260,7 @@ nav {
     color: #666666;
     font-size: 1.1rem;
     line-height: 1.5;
-    margin-top: 12px;
+    margin-top: 10px;
   }
   &__list {
     display: flex;
@@ -279,7 +276,7 @@ nav {
       background-color: #f9fafb;
       padding: 10px;
       border-radius: 8px;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
       margin: 20px 20px 0 0;
       opacity: 0.8;
       &:hover {
@@ -317,6 +314,43 @@ nav {
         span {
           color: #000;
         }
+      }
+    }
+  }
+}
+.contact {
+  flex-direction: column;
+  justify-content: center;
+  h2 {
+    font-weight: 500;
+    color: #42446e;
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    max-width: 400px;
+    .text-input {
+      outline: none;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 8px;
+      padding: 15px;
+      resize: none;
+    }
+    button {
+      color: #fff;
+      width: 150px;
+      padding: 12px;
+      border-radius: 8px;
+      background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
+      opacity: 0.9;
+      &:hover {
+        opacity: 1;
       }
     }
   }
