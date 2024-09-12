@@ -5,7 +5,8 @@ import CourseCard from './components/CourseCard/CourseCard';
 function App() {
   return (
     <div className="App">
-      <CourseCard title="React" price="$1" language="EN" duration="1h" location="Sydney" />
+      <CourseCard title="React" price="$1" language="EN" duration="1h" location="Sydney" isNew={true} />
+      <CourseCard title=".Net" price="$2" language="EN" duration="1h" location="Melbourne" isNew={false} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
