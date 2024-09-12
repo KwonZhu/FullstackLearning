@@ -14,13 +14,19 @@ const Card = styled.div`
 const CourseCard = ({ title, price, language, duration, location, isNew, difficulty }) => {
   const [isReviewed, setIsReviewed] = useState(false);
   const [isReviewSubmitted, setIsReviewSubmitted] = useState(false);
+  const [enrollCount, setEnrollCount] = useState(0);
 
   const handleIsReviewedChange = () => {
     setIsReviewed(true);
   };
 
-  const handleIsReviewSubmittedChange = () => {
+  const handleIsReviewSubmittedChange = (e) => {
+    e.preventDefault();
     setIsReviewSubmitted(true);
+  };
+
+  const handleEnrollCountChange = () => {
+    setEnrollCount(enrollCount + 1);
   };
 
   return (
@@ -32,7 +38,6 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
       <p>Location: {location}</p>
       {isNew && <p>New Course</p>}
       <p>Level: {difficulty}</p>
-      <button>{difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now'}</button>
 
       {/* Review */}
       {!isReviewed && <button onClick={handleIsReviewedChange}>Leave a Review</button>}
@@ -42,6 +47,12 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
           <button type="submit">{isReviewSubmitted ? 'Review Submitted' : 'Submit'}</button>
         </form>
       )}
+
+      {/* Enroll and count courses */}
+      <button onClick={handleEnrollCountChange}>
+        {difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now'}
+      </button>
+      <p>Enrolled: {enrollCount > 0 ? `${enrollCount} courses` : '0 course'}</p>
     </Card>
   );
 };
