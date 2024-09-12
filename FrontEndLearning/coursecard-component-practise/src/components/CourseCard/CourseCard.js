@@ -12,9 +12,14 @@ const Card = styled.div`
 `;
 
 const CourseCard = ({ title, price, language, duration, location, isNew, difficulty }) => {
+  const [isEnrolled, setIsEnrolled] = useState(false);
   const [isReviewed, setIsReviewed] = useState(false);
   const [isReviewSubmitted, setIsReviewSubmitted] = useState(false);
   const [enrollCount, setEnrollCount] = useState(0);
+
+  const handleIsEnrolledChange = () => {
+    setIsEnrolled(true);
+  };
 
   const handleIsReviewedChange = () => {
     setIsReviewed(true);
@@ -26,8 +31,11 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
   };
 
   const handleEnrollCountChange = () => {
+    handleIsEnrolledChange();
     setEnrollCount(enrollCount + 1);
   };
+
+  const enrollText = difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now';
 
   return (
     <Card>
@@ -39,20 +47,22 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
       {isNew && <p>New Course</p>}
       <p>Level: {difficulty}</p>
 
-      {/* Review */}
-      {!isReviewed && <button onClick={handleIsReviewedChange}>Leave a Review</button>}
-      {isReviewed && (
-        <form onSubmit={handleIsReviewSubmittedChange}>
-          <textarea cols={20} rows={5}></textarea>
-          <button type="submit">{isReviewSubmitted ? 'Review Submitted' : 'Submit'}</button>
-        </form>
-      )}
-
       {/* Enroll and count courses */}
-      <button onClick={handleEnrollCountChange}>
-        {difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now'}
-      </button>
+      <button onClick={handleEnrollCountChange}>{enrollText}</button>
       <p>Enrolled: {enrollCount > 0 ? `${enrollCount} courses` : '0 course'}</p>
+
+      {/* Review */}
+      {isEnrolled && (
+        <div>
+          {!isReviewed && <button onClick={handleIsReviewedChange}>Leave a Review</button>}
+          {isReviewed && (
+            <form onSubmit={handleIsReviewSubmittedChange}>
+              <textarea cols={20} rows={5}></textarea>
+              <button type="submit">{isReviewSubmitted ? 'Review Submitted' : 'Submit'}</button>
+            </form>
+          )}
+        </div>
+      )}
     </Card>
   );
 };
