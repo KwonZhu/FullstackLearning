@@ -5,8 +5,33 @@ import CourseCard from './components/CourseCard/CourseCard';
 function App() {
   return (
     <div className="App">
-      <CourseCard title="React" price="$1" language="EN" duration="1h" location="Sydney" isNew={true} />
-      <CourseCard title=".Net" price="$2" language="EN" duration="1h" location="Melbourne" isNew={false} />
+      <CourseCard
+        title="React"
+        price="$1"
+        language="EN"
+        duration="1h"
+        location="Sydney"
+        isNew={true}
+        difficulty="Beginner"
+      />
+      <CourseCard
+        title=".Net"
+        price="$2"
+        language="EN"
+        duration="1h"
+        location="Melbourne"
+        isNew={false}
+        difficulty="Intermediate"
+      />
+      <CourseCard
+        title="NodeJS"
+        price="$3"
+        language="EN"
+        duration="1h"
+        location="Melbourne"
+        isNew={true}
+        difficulty="Advanced"
+      />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
