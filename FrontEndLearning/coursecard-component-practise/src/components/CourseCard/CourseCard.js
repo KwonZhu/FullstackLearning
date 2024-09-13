@@ -13,30 +13,20 @@ const Card = styled.div`
 
 const CourseCard = ({ title, price, language, duration, location, isNew, difficulty }) => {
   const [isEnrolled, setIsEnrolled] = useState(false);
-  const [isReviewed, setIsReviewed] = useState(false);
-  const [isReviewSubmitted, setIsReviewSubmitted] = useState(false);
+  const [isShowInput, setIsShowInput] = useState(true);
   const [enrollCount, setEnrollCount] = useState(0);
 
   const handleIsEnrolledChange = () => {
     setIsEnrolled(true);
-  };
-
-  const handleIsReviewedChange = () => {
-    setIsReviewed(true);
-  };
-
-  const handleIsReviewSubmittedChange = (e) => {
-    e.preventDefault();
-    setIsReviewSubmitted(true);
-  };
-
-  const handleEnrollCountChange = () => {
-    handleIsEnrolledChange();
     setEnrollCount(enrollCount + 1);
   };
 
-  const enrollText = difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now';
+  const handleIsShowInputChange = () => {
+    setIsShowInput(!isShowInput);
+  };
 
+  const enrollText = difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now';
+  const enrollCountText = enrollCount > 0 ? `${enrollCount} courses` : '0 course';
   return (
     <Card>
       <p>Course: {title}</p>
@@ -48,19 +38,14 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
       <p>Level: {difficulty}</p>
 
       {/* Enroll and count courses */}
-      <button onClick={handleEnrollCountChange}>{enrollText}</button>
-      <p>Enrolled: {enrollCount > 0 ? `${enrollCount} courses` : '0 course'}</p>
+      <button onClick={handleIsEnrolledChange}>{enrollText}</button>
+      <p>Enrolled: {enrollCountText}</p>
 
       {/* Review */}
       {isEnrolled && (
         <div>
-          {!isReviewed && <button onClick={handleIsReviewedChange}>Leave a Review</button>}
-          {isReviewed && (
-            <form onSubmit={handleIsReviewSubmittedChange}>
-              <textarea cols={20} rows={5}></textarea>
-              <button type="submit">{isReviewSubmitted ? 'Review Submitted' : 'Submit'}</button>
-            </form>
-          )}
+          {isShowInput && <input type="text" placeholder="Leave your review"></input>}
+          {<button onClick={handleIsShowInputChange}>Submit</button>}
         </div>
       )}
     </Card>
