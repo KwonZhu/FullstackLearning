@@ -22,7 +22,7 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
   };
 
   const handleIsShowInputChange = () => {
-    setIsShowInput(!isShowInput);
+    setIsShowInput(false);
   };
 
   const enrollText = difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now';
