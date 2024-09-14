@@ -157,15 +157,16 @@ nav {
         justify-content: space-evenly;
         width: 120px;
         margin: 10px 0;
+        .fa-linkedin {
+          font-size: 1.75rem;
+          color: #0a66c2;
+        }
+        .fa-github {
+          font-size: 1.75rem;
+          color: #000;
+        }
       }
-      .fa-linkedin {
-        font-size: 1.75rem;
-        color: #0a66c2;
-      }
-      .fa-github {
-        font-size: 1.75rem;
-        color: #000;
-      }
+
       button {
         width: 120px;
         padding: 12px;
@@ -351,6 +352,32 @@ nav {
       opacity: 0.9;
       &:hover {
         opacity: 1;
+      }
+    }
+  }
+}
+footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #666666;
+  .links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    .logo a {
+      @extend %font-gradient-shared;
+    }
+    .social-media {
+      display: flex;
+      gap: 15px;
+      .fa-linkedin {
+        font-size: 1.5rem;
+        color: #0a66c2;
+      }
+      .fa-github {
+        font-size: 1.5rem;
+        color: #000;
       }
     }
   }
