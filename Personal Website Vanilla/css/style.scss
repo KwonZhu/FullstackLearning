@@ -166,7 +166,6 @@ nav {
           color: #000;
         }
       }
-
       button {
         width: 120px;
         padding: 12px;
@@ -185,6 +184,8 @@ nav {
   .profile-photo {
     width: 30%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     img {
       width: 250px;
       height: 250px;
@@ -197,9 +198,8 @@ nav {
       100% {
         transform: translateY(0);
       }
-
       50% {
-        transform: translateY(-30px);
+        transform: translateY(-20px);
       }
     }
   }
@@ -234,8 +234,7 @@ nav {
         padding: 12px 12px;
         border-radius: 8px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-        margin: 20px 0 10px 0;
-        transition: opacity 0.6s ease-out;
+        margin: 20px 10px;
         img {
           width: 48px;
           height: 48px;
@@ -278,7 +277,7 @@ nav {
       padding: 10px;
       border-radius: 8px;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-      margin: 20px 20px 0 0;
+      margin: 24px 0 0 0;
       opacity: 0.8;
       &:hover {
         opacity: 1;
@@ -326,7 +325,7 @@ nav {
     font-weight: 500;
     color: #42446e;
     font-size: 2rem;
-    margin-bottom: 40px;
+    margin: 20px 0;
   }
   form {
     margin-top: 10px;
@@ -350,6 +349,7 @@ nav {
       border-radius: 8px;
       background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
       opacity: 0.9;
+      align-self: flex-end;
       &:hover {
         opacity: 1;
       }

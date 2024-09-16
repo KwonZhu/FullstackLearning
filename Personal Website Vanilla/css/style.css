@@ -131,7 +131,9 @@ nav {
       color: #fff; }
   .home .profile-photo {
     width: 30%;
-    display: flex; }
+    display: flex;
+    align-items: center;
+    justify-content: center; }
     .home .profile-photo img {
       width: 250px;
       height: 250px;
@@ -143,7 +145,7 @@ nav {
       100% {
     transform: translateY(0); }
   50% {
-    transform: translateY(-30px); } }
+    transform: translateY(-20px); } }
 .skills {
   flex-direction: column; }
   .skills h2 {
@@ -171,8 +173,7 @@ nav {
         padding: 12px 12px;
         border-radius: 8px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-        margin: 20px 0 10px 0;
-        transition: opacity 0.6s ease-out; }
+        margin: 20px 10px; }
         .skills .skills-info__technologies__card img {
           width: 48px;
           height: 48px; }
@@ -208,7 +209,7 @@ nav {
       padding: 10px;
       border-radius: 8px;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-      margin: 20px 20px 0 0;
+      margin: 24px 0 0 0;
       opacity: 0.8; }
       .projects__list .projects-card:hover {
         opacity: 1; }
@@ -244,7 +245,7 @@ nav {
     font-weight: 500;
     color: #42446e;
     font-size: 2rem;
-    margin-bottom: 40px; }
+    margin: 20px 0; }
   .contact form {
     margin-top: 10px;
     display: flex;
@@ -265,7 +266,8 @@ nav {
       padding: 12px;
       border-radius: 8px;
       background-image: linear-gradient(315deg, #742df6 25%, #25a2ef);
-      opacity: 0.9; }
+      opacity: 0.9;
+      align-self: flex-end; }
       .contact form button:hover {
         opacity: 1; }
 
@@ -287,5 +289,51 @@ footer {
       footer .links .social-media .fa-github {
         font-size: 1.5rem;
         color: #000; }
+
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    justify-content: center; }
+    .home .home-info {
+      width: 100%;
+      align-items: center; }
+      .home .home-info__title h1 {
+        font-size: 1.5rem; }
+        .home .home-info__title h1 .name {
+          font-size: 1.75rem; }
+        .home .home-info__title h1 .animation {
+          font-size: 1.25rem; }
+      .home .home-info__title p {
+        font-size: 1rem; }
+      .home .home-info__contacts {
+        margin-top: 10px; }
+        .home .home-info__contacts button {
+          padding: 10px; }
+    .home .profile-photo {
+      width: 100%;
+      margin-top: 30px; }
+      .home .profile-photo img {
+        width: 180px;
+        height: 180px; } }
+@media (max-width: 480px) {
+  .home .home-info__title h1 {
+    font-size: 1.25rem; }
+    .home .home-info__title h1 .name {
+      font-size: 1.5rem; }
+    .home .home-info__title h1 .animation {
+      font-size: 1rem; }
+  .home .home-info__title p {
+    font-size: 0.9rem; }
+  .home .home-info__contacts {
+    margin-top: 10px; }
+    .home .home-info__contacts button {
+      width: 100px;
+      margin: 5px;
+      padding: 8px; }
+      .home .home-info__contacts button a {
+        font-size: 0.9rem; }
+  .home .profile-photo img {
+    width: 150px;
+    height: 150px; } }
 
 /*# sourceMappingURL=style.css.map */
