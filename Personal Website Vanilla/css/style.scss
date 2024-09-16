@@ -382,3 +382,81 @@ footer {
     }
   }
 }
+
+// =========================================================================
+// Mobile responsiveness
+@media screen and (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    justify-content: center;
+    .home-info {
+      width: 100%;
+      align-items: center;
+      &__title {
+        h1 {
+          font-size: 1.5rem;
+          .name {
+            font-size: 1.75rem;
+          }
+          .animation {
+            font-size: 1.25rem;
+          }
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+      &__contacts {
+        margin-top: 10px;
+        button {
+          padding: 10px;
+        }
+      }
+    }
+    .profile-photo {
+      width: 100%;
+      margin-top: 30px;
+      img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  }
+}
+
+// Extra responsiveness for small mobile screens (320px)
+@media screen and (max-width: 480px) {
+  .home {
+    .home-info {
+      &__title {
+        h1 {
+          font-size: 1.25rem;
+          .name {
+            font-size: 1.5rem;
+          }
+          .animation {
+            font-size: 1rem;
+          }
+        }
+        p {
+          font-size: 0.9rem;
+        }
+      }
+      &__contacts {
+        margin-top: 10px;
+        button {
+          width: 100px;
+          margin: 5px;
+          padding: 8px;
+          a {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+    .profile-photo img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}

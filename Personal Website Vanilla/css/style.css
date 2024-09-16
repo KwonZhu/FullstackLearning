@@ -290,7 +290,7 @@ footer {
         font-size: 1.5rem;
         color: #000; }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .home {
     flex-direction: column;
     justify-content: center; }
@@ -315,7 +315,7 @@ footer {
       .home .profile-photo img {
         width: 180px;
         height: 180px; } }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .home .home-info__title h1 {
     font-size: 1.25rem; }
     .home .home-info__title h1 .name {
