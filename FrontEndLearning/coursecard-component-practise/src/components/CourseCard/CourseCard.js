@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Card = styled.div`
-  width: 350px;
+  width: 250px;
   height: 500px;
   background-color: lightblue;
   margin: 0 auto;
@@ -11,7 +11,9 @@ const Card = styled.div`
   }
 `;
 
-const CourseCard = ({ title, price, language, duration, location, isNew, difficulty, isCompleted }) => {
+const CourseCard = ({ data }) => {
+  const { title, price, language, duration, location, isNew, difficulty, isCompleted } = data;
+
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [isShowInput, setIsShowInput] = useState(true);
   const [enrollCount, setEnrollCount] = useState(0);
@@ -57,7 +59,9 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
         <div>
           {isShowInput && <input type="text" placeholder="Leave your review"></input>}
           {<button onClick={handleIsShowInputChange}>Submit</button>}
+          {/* course completion */}
           <button>{courseCompleteText}</button>
+          {/* add to Favorite */}
           <button onClick={handleIsFavoriteChange}>{favoriteText}</button>
         </div>
       )}

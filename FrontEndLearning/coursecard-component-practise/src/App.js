@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import CourseCard from './components/CourseCard/CourseCard';
+import React, { useState } from 'react';
 
 const courses = [
   {
@@ -39,9 +40,24 @@ const courses = [
 ];
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // // Requires the title to exactly match the search query, partial matches won’t work
+  // const displayCourses = courses.filter((course) => course.title.toLowerCase() === searchQuery.toLowerCase());
+
+  // Substring Match allows for partial matching
+  const displayCourses = courses.filter((course) => course.title.toLowerCase().includes(searchQuery.toLowerCase()));
   return (
     <div className="App">
-      {courses.map((course) => (
+      {/* search */}
+      <input
+        type="text"
+        placeholder="search for courses by title"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      ></input>
+
+      {displayCourses.map((course) => (
         <CourseCard data={course} key={course.id} />
       ))}
       <header className="App-header">
