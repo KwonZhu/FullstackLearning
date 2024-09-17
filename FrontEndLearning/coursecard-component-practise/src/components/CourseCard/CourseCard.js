@@ -11,10 +11,11 @@ const Card = styled.div`
   }
 `;
 
-const CourseCard = ({ title, price, language, duration, location, isNew, difficulty }) => {
+const CourseCard = ({ title, price, language, duration, location, isNew, difficulty, isCompleted }) => {
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [isShowInput, setIsShowInput] = useState(true);
   const [enrollCount, setEnrollCount] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleIsEnrolledChange = () => {
     setIsEnrolled(true);
@@ -25,11 +26,21 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
     setIsShowInput(false);
   };
 
+  const handleIsFavoriteChange = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   const enrollText = difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now';
   const enrollCountText = enrollCount > 0 ? `${enrollCount} courses` : '0 course';
+  const courseCompleteText = isCompleted ? 'Revisit Course' : 'Start Course';
+  const favoriteText = isFavorite ? 'Unfavorite' : 'Favorite';
+
   return (
     <Card>
-      <p>Course: {title}</p>
+      <p>
+        Course: {title}
+        {isFavorite && <span>⭐</span>}
+      </p>
       <p>Price: {price}</p>
       <p>Language: {language}</p>
       <p>Duration: {duration}</p>
@@ -46,6 +57,8 @@ const CourseCard = ({ title, price, language, duration, location, isNew, difficu
         <div>
           {isShowInput && <input type="text" placeholder="Leave your review"></input>}
           {<button onClick={handleIsShowInputChange}>Submit</button>}
+          <button>{courseCompleteText}</button>
+          <button onClick={handleIsFavoriteChange}>{favoriteText}</button>
         </div>
       )}
     </Card>
