@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import CourseCard from './components/CourseCard/CourseCard';
 import React, { useState, useEffect } from 'react';
-import LecturerCard from './components/LecturerCard/LectureCard';
+import LecturerCard from './components/LecturerCard/LecturerCard';
 
 const courses = [
   {
