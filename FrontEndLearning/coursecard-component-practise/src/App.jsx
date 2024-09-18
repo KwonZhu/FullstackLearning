@@ -50,16 +50,33 @@ function App() {
   // Substring Match allows for partial matching
   const displayCourses = courses.filter((course) => course.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  // get lecturers from remote
+  // use fetch() with Promises to get lecturers from remote
+  // useEffect(() => {
+  //   fetch('https://my-json-server.typicode.com/JustinHu8/courseCardMock/lecturers')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setLecturers(data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching data:', error);
+  //     });
+  // }, []);
+
+  // use async/await to fetch
   useEffect(() => {
-    fetch('https://my-json-server.typicode.com/JustinHu8/courseCardMock/lecturers')
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchLecturers = async () => {
+      try {
+        const response = await fetch('https://my-json-server.typicode.com/JustinHu8/courseCardMock/lecturers');
+        if (!response.ok) {
+          throw new Error('Fail to fetch lecturers');
+        }
+        const data = await response.json();
         setLecturers(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+      } catch (error) {
+        console.error('Error fetching data');
+      }
+    };
+    fetchLecturers();
   }, []);
 
   return (
