@@ -3,6 +3,7 @@ import './App.css';
 import CourseCard from './components/CourseCard/CourseCard';
 import React, { useState, useEffect } from 'react';
 import LecturerCard from './components/LecturerCard/LecturerCard';
+import axios from 'axios';
 
 const courses = [
   {
@@ -63,20 +64,34 @@ function App() {
   // }, []);
 
   // use async/await to fetch
+  // useEffect(() => {
+  //   const fetchLecturers = async () => {
+  //     try {
+  //       const response = await fetch('https://my-json-server.typicode.com/JustinHu8/courseCardMock/lecturers');
+  //       // Check if the response is OK (status 200-299)
+  //       if (!response.ok) {
+  //         throw new Error('Fail to fetch lecturers');
+  //       }
+  //       const data = await response.json();
+  //       setLecturers(data);
+  //     } catch (error) {
+  //       console.error('fetch error', error);
+  //     }
+  //   };
+  //   fetchLecturers();
+  // }, []);
+
+  // Using Axios with async/await
   useEffect(() => {
-    const fetchLecturers = async () => {
+    const axiosLecturers = async () => {
       try {
-        const response = await fetch('https://my-json-server.typicode.com/JustinHu8/courseCardMock/lecturers');
-        if (!response.ok) {
-          throw new Error('Fail to fetch lecturers');
-        }
-        const data = await response.json();
-        setLecturers(data);
+        const response = await axios.get('https://my-json-server.typicode.com/JustinHu8/courseCardMock/lecturers');
+        setLecturers(response.data);
       } catch (error) {
-        console.error('Error fetching data');
+        console.error('axios error', error);
       }
     };
-    fetchLecturers();
+    axiosLecturers();
   }, []);
 
   return (
