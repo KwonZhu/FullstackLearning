@@ -107,7 +107,7 @@ function App() {
         placeholder="search for courses by title"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-      ></input>
+      />
 
       {/* display searched courses */}
       {displayCourses.map((course) => (

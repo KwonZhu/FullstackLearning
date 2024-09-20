@@ -21,7 +21,7 @@ const CourseCard = ({ data }) => {
 
   const handleIsEnrolledChange = () => {
     setIsEnrolled(true);
-    setEnrollCount(enrollCount + 1);
+    setEnrollCount((prevEnroll) => prevEnroll + 1);
   };
 
   const handleIsShowInputChange = () => {
