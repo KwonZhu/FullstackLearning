@@ -16,6 +16,7 @@ const courses = [
     isNew: true,
     difficulty: 'Beginner',
     isCompleted: false,
+    isFavorite: false,
   },
   {
     id: 2,
@@ -27,6 +28,7 @@ const courses = [
     isNew: false,
     difficulty: 'Intermediate',
     isCompleted: true,
+    isFavorite: false,
   },
   {
     id: 3,
@@ -38,18 +40,30 @@ const courses = [
     isNew: true,
     difficulty: 'Advanced',
     isCompleted: true,
+    isFavorite: false,
   },
 ];
 
 function App() {
+  const [myCourses, setMyCourses] = useState(courses);
   const [searchQuery, setSearchQuery] = useState('');
   const [lecturers, setLecturers] = useState([]);
+
+  const handleIsFavoriteChange = (courseId) => {
+    const newCourses = myCourses.map((course) => {
+      if (course.id === courseId) {
+        course.isFavorite = !course.isFavorite;
+      }
+      return course;
+    });
+    setMyCourses(newCourses);
+  };
 
   // // Requires the title to exactly match the search query, partial matches won’t work
   // const displayCourses = courses.filter((course) => course.title.toLowerCase() === searchQuery.toLowerCase());
 
   // Substring Match allows for partial matching
-  const displayCourses = courses.filter((course) => course.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const displayCourses = myCourses.filter((course) => course.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   // use fetch() with Promises to get lecturers from remote
   // useEffect(() => {
@@ -111,7 +125,7 @@ function App() {
 
       {/* display searched courses */}
       {displayCourses.map((course) => (
-        <CourseCard data={course} key={course.id} />
+        <CourseCard data={course} key={course.id} handleIsFavoriteChange={handleIsFavoriteChange} />
       ))}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

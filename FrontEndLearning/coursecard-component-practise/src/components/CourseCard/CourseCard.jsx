@@ -11,31 +11,26 @@ const Card = styled.div`
   }
 `;
 
-const CourseCard = ({ data }) => {
-  const { title, price, language, duration, location, isNew, difficulty, isCompleted } = data;
+const CourseCard = ({ data, handleIsFavoriteChange }) => {
+  const { id, title, price, language, duration, location, isNew, difficulty, isCompleted, isFavorite } = data;
 
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [isShowInput, setIsShowInput] = useState(true);
   const [enrollCount, setEnrollCount] = useState(0);
-  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleIsEnrolledChange = () => {
     setIsEnrolled(true);
-    setEnrollCount((prevEnroll) => prevEnroll + 1);
+    setEnrollCount((prevEnrollCount) => prevEnrollCount + 1);
   };
 
   const handleIsShowInputChange = () => {
     setIsShowInput(false);
   };
 
-  const handleIsFavoriteChange = () => {
-    setIsFavorite(!isFavorite);
-  };
-
   const enrollText = difficulty === 'Beginner' ? 'Start Learning Now!' : 'Enroll Now';
   const enrollCountText = enrollCount > 0 ? `${enrollCount} courses` : '0 course';
   const courseCompleteText = isCompleted ? 'Revisit Course' : 'Start Course';
-  const favoriteText = isFavorite ? 'Unfavorite' : 'Favorite';
+  const isFavoriteText = isFavorite ? 'Unfavorite' : 'Favorite';
 
   return (
     <Card>
@@ -62,7 +57,7 @@ const CourseCard = ({ data }) => {
           {/* course completion */}
           <button>{courseCompleteText}</button>
           {/* add to Favorite */}
-          <button onClick={handleIsFavoriteChange}>{favoriteText}</button>
+          <button onClick={() => handleIsFavoriteChange(id)}>{isFavoriteText}</button>
         </div>
       )}
     </Card>
