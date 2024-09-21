@@ -59,10 +59,14 @@ function App() {
     setMyCourses(newCourses);
   };
 
-  // // Requires the title to exactly match the search query, partial matches won’t work
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // // Requires the title to exactly match the search query, partial matches won’t work. Not user friendly
   // const displayCourses = courses.filter((course) => course.title.toLowerCase() === searchQuery.toLowerCase());
 
-  // Substring Match allows for partial matching
+  // Substring Match allows for partial matching (eg 're' can match 'React')
   const displayCourses = myCourses.filter((course) => course.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   // use fetch() with Promises to get lecturers from remote
@@ -120,7 +124,7 @@ function App() {
         type="text"
         placeholder="search for courses by title"
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={handleSearchQueryChange}
       />
 
       {/* display searched courses */}
@@ -141,3 +145,66 @@ function App() {
 }
 
 export default App;
+
+// import CourseCard from './components/CourseCard/CourseCard';
+// import React, { useState, useEffect } from 'react';
+// const courses = [
+//   {
+//     id: 1,
+//     title: 'React',
+//     price: '$1',
+//     language: 'EN',
+//     duration: '2 hours',
+//     location: 'Sydney',
+//     isNew: true,
+//     difficulty: 'Beginner',
+//     isCompleted: false,
+//     isFavorite: false,
+//   },
+//   {
+//     id: 2,
+//     title: '.Net',
+//     price: '$2',
+//     language: 'EN',
+//     duration: '5 hours',
+//     location: 'Melbourne',
+//     isNew: false,
+//     difficulty: 'Intermediate',
+//     isCompleted: true,
+//     isFavorite: false,
+//   },
+//   {
+//     id: 3,
+//     title: 'NodeJS',
+//     price: '$3',
+//     language: 'EN',
+//     duration: '10 hours',
+//     location: 'Melbourne',
+//     isNew: true,
+//     difficulty: 'Advanced',
+//     isCompleted: true,
+//     isFavorite: false,
+//   },
+// ];
+
+// function App() {
+//   const [myCourses, setMyCourses] = useState(courses);
+//   const handleIsFavoriteChange = (courseId) => {
+//     const newCourses = myCourses.map((course) => {
+//       if (course.id === courseId) {
+//         course.isFavorite = !course.isFavorite;
+//       }
+//       return course;
+//     });
+//     setMyCourses(newCourses);
+//   };
+//   return (
+//     <div className="App">
+//        {myCourses.map((course) => (
+//         <CourseCard data={course} key={course.id} handleIsFavoriteChange={handleIsFavoriteChange} />
+//       ))}
+//        </div>
+//   );
+// }
+
+// export default App;
