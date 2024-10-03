@@ -65,7 +65,9 @@ nav {
       opacity: 1;
       transition: opacity 0.3 ease-in-out; }
   nav .menu-btn {
-    display: none; }
+    display: none;
+    cursor: pointer;
+    color: #666666; }
 
 .home {
   padding-top: 80px;
