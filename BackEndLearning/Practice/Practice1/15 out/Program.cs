@@ -9,8 +9,10 @@
             string username = Console.ReadLine();
             Console.WriteLine("please input your password");
             string password = Console.ReadLine();
+
             bool isLogin = Login(username, password, out message);
-            if (isLogin) 
+
+            if (isLogin)
             {
                 Console.WriteLine($"Successful! {message}");
             }
@@ -19,14 +21,14 @@
                 Console.WriteLine($"Sorry, {message}");
             }
         }
-        public static bool Login(string username, string password, out string message) 
+        public static bool Login(string username, string password, out string message)
         {
             if (username != "admin")
             {
                 message = "username is incorrect";
                 return false;
             }
-            else if (password != "88888") 
+            else if (password != "88888")
             {
                 message = "password is incorrect";
                 return false;

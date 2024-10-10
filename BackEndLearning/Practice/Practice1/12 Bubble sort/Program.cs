@@ -7,6 +7,7 @@
             int[] nums = { 1, 4, 3, 9, 6, 8, 11 };
             int i, j, temp;
             bool swapped;
+
             for (i = 0; i < nums.Length - 1; i++)
             {
                 swapped = false;
@@ -26,10 +27,11 @@
                     break;
                 }
             }
+
             foreach (int k in nums)
             {
                 Console.Write($"{k}, ");
             }
-        } 
+        }
     }
 }

@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             int time = 107653;
-            
+
             // get days, hours, minutes, seconds
             int days = time / 86400;
             int remainingAfterDays = time % 86400;

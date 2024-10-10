@@ -18,7 +18,7 @@ namespace _6_Switch_case
                     salary += 200;
                     break;
                 case "c":
-                     break;
+                    break;
                 case "d":
                     salary -= 200;
                     break;

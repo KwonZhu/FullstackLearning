@@ -19,7 +19,6 @@ namespace _7_Leap_year
             System.Globalization.DateTimeFormatInfo dtfi = new System.Globalization.DateTimeFormatInfo();
             String strMonthName = dtfi.GetMonthName(month).ToString(); //convert int to month name
 
-
             Console.WriteLine($"{year} is {(isLeapYear ? "leap year" : "not leap year")}");
             Console.WriteLine($"There are {days} days in {strMonthName} of {year}");
 

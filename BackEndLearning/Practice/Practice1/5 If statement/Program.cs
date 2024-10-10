@@ -9,12 +9,14 @@
             Console.WriteLine("Enter password");
             string password = Console.ReadLine();
 
-            if (userName == "admin") {
+            if (userName == "admin")
+            {
                 if (password == "88888")
                 {
                     Console.WriteLine("Correct input!");
                 }
-                else {
+                else
+                {
                     Console.WriteLine("Incorrect password");
                 }
             }
@@ -22,9 +24,6 @@
             {
                 Console.WriteLine("Incorrect username");
             }
-
-
-
         }
     }
 }

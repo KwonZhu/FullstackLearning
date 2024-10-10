@@ -8,8 +8,8 @@
             Console.WriteLine(max);
         }
 
-        public static int MaxValue(int n1, int n2) 
-        { 
+        public static int MaxValue(int n1, int n2)
+        {
             return n1 > n2 ? n1 : n2;
         }
     }
