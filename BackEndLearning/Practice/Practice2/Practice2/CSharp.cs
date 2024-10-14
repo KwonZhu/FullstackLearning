@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Practice2
 {
-    public class CSharpCourse : Course
+    public class CSharp : Course
     {
         // Constructor that calls base class constructor
-        public CSharpCourse(int id, int hours) : base(id, "C#", hours) { }
+        public CSharp(int id, int hours) : base(id, "C#", hours) { }
     }
 }
