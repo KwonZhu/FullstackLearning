@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+$line-border-color: #3498db;
+$line-border-empty: #e0e0e0;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f6fb;
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  .container {
+    text-align: center;
+  }
+  .progress-container {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    max-width: 100%;
+    margin-bottom: 30px;
+    position: relative; //for pseudo class before
+    &::before {
+      content: '';
+      background-color: $line-border-empty;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 4px;
+    }
+  }
+}
