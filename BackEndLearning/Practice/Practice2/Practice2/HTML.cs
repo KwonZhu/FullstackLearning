@@ -12,3 +12,4 @@ namespace Practice2
         public HTML(int id, int hours) : base(id, "HTML", hours) { }
     }
 }
+
