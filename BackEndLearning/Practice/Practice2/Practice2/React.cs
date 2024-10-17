@@ -12,4 +12,3 @@ namespace Practice2
         public React(int id, int hours) : base(id, "React", hours) { }
     }
 }
-

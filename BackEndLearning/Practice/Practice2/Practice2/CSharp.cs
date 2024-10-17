@@ -12,4 +12,3 @@ namespace Practice2
         public CSharp(int id, int hours) : base(id, "C#", hours) { }
     }
 }
-

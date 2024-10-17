@@ -33,29 +33,10 @@ namespace Practice2
                     foreach (var Id in course.StudentIds)
                     {
                         var student = students.Find(s => s.Id == Id);
-                        Console.WriteLine($"Student : {student?.Name ?? "not found"}");
+                        Console.WriteLine($"Student: {student.Name}, Id: {student.Id}, Age: {student.Age}");
                     }
                 }
-
             }
         }
-        //public void PrintTeacherInfo(List<Student> students)
-        //{
-        //    Console.WriteLine($"Teacher: {Name} (ID: {ID}) teaches the following courses:");
-
-        //    foreach (var course in Courses)
-        //    {
-        //        Console.WriteLine($"Course: {course.CourseName}, Hours: {course.Hours}");
-
-        //        Console.WriteLine("Enrolled students:");
-        //        foreach (var studentID in course.StudentIds)
-        //        {
-        //            var student = students.Find(s => s.Id == studentID);
-        //            Console.WriteLine($"Student Name: {student.Name}, Age: {student.Age}");
-        //        }
-        //        Console.WriteLine();
-        //    }
-        //}
     }
 }
-
