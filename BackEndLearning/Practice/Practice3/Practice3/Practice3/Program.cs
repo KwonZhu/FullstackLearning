@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace Practice3
 {
     public class Program
@@ -9,6 +11,9 @@ namespace Practice3
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            //Default invalid is suppressed
+            //builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
 
             var app = builder.Build();
 

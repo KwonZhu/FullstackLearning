@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Practice3.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace Practice3.Models
 {
 
-    public enum Gender
+    public enum GenderEnum
     {
         Male, //0
         Female, //1
@@ -11,15 +12,16 @@ namespace Practice3.Models
     }
     public class User
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string? UserName { get; set; }
         [EmailAddress]
         public string? Email { get; set; }
         public string? Address { get; set; }
         [Required]
-        public Gender? Gender { get; set; }
+        public GenderEnum? Gender { get; set; }
         public string? Password { get; set; }
+        [PhoneValidation]
         public string? Phone { get; set; }
     }
 

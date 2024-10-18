@@ -4,8 +4,9 @@ namespace Practice3.Models
 {
     public class Teacher
     {
+        public int UserId { get; set; }
         [Required]
-        public string? Deoartment { get; set; }
+        public string? Department { get; set; }
         [MaxLength(500)]
         public string? Description { get; set; }
         [Required]
