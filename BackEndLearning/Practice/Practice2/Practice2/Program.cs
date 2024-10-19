@@ -4,21 +4,21 @@
     {
         static void Main(string[] args)
         {
-            List<Course> courses = new List<Course>
+            List<Course> courses = new List<Course>()
             {
                 new CSharp(1, 30),
                 new HTML(2, 6),
                 new React(3, 30),
             };
 
-            List<Teacher> teachers = new List<Teacher>
+            List<Teacher> teachers = new List<Teacher>()
             {
                 new Teacher(1, "Lily"),
                 new Teacher(2, "Ally"),
                 new Teacher(3, "Justin"),
             };
 
-            List<Student> students = new List<Student>
+            List<Student> students = new List<Student>()
             {
                 new Student(0, "Melody", 20),
                 new Student(1, "Ryan", 21),
