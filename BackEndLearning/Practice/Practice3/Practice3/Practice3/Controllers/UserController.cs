@@ -3,6 +3,7 @@ using Practice3.Models;
 using System.Net;
 using System.Numerics;
 using System.Reflection;
+using System.Security.Cryptography.Xml;
 
 namespace Practice3.Controllers
 {
@@ -52,15 +53,15 @@ namespace Practice3.Controllers
         {
             if (ModelState.IsValid)
             {
-                return new JsonResult(null);
-            }
-            var _user = Users.FirstOrDefault(u => u.Id == user.id);
-            if (!_user == null)
-            {
+                var _user = Users.FirstOrDefault(u => u.Id == user.Id);
+                if (_user == null)
+                {
+                    Users.Add(user);
+                    return new JsonResult(user);
+                }
                 return new JsonResult("User id has been taken");
             }
-            Users.Add(user);
-            return new JsonResult(user);
+            return new JsonResult("ModelState.IsValid false");
         }
 
         [HttpPost]
@@ -69,20 +70,42 @@ namespace Practice3.Controllers
         {
             if (ModelState.IsValid)
             {
-                return new JsonResult(null);
-            }
-            var _user = Users.FirstOrDefault(u => u.Id == user.id);
-            if (!_user == null)
-            {
+                var _user = Users.FirstOrDefault(u => u.Id == user.Id);
+                if (_user == null)
+                {
+                    Users.Add(user);
+                    return new JsonResult(user);
+                }
                 return new JsonResult("User id has been taken");
             }
-            Users.Add(user);
-            return new JsonResult(user);
+            return new JsonResult("ModelState.IsValid false");
         }
         #endregion
 
         #region
-        [HttpPut("{id}")]
+        [HttpPut]
+        public JsonResult UpdateUser([FromBody] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var _user = Users.FirstOrDefault(u => u.Id == user.Id);
+                if (_user == null)
+                {
+                    return new JsonResult("User not found");
+
+
+                }
+                //user = updatedUser: Replaces the reference, causing the original object in the list to remain unchanged
+               _user.UserName = user.UserName;
+               _user.Email = user.Email;
+               _user.Address = user.Address;
+               _user.Gender = user.Gender;
+               _user.Password = user.Password;
+               _user.Phone = user.Phone; ;
+                return new JsonResult(user);
+            }
+            return new JsonResult("ModelState.IsValid false");
+        }
         #endregion
 
         //[HttpDelete("{id}")]

@@ -12,8 +12,7 @@ namespace Practice3
 
             builder.Services.AddControllers();
 
-            //Default invalid is suppressed
-            //builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+            builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
 
             var app = builder.Build();
 
