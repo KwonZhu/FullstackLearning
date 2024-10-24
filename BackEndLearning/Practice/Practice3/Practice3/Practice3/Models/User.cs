@@ -12,17 +12,17 @@ namespace Practice3.Models
     }
     public class User
     {
-        public int Id { get; set; }
-        [Required]
+        [Key]
+        public int UserId { get; set; }
+        [Required(ErrorMessage = "Username cannot be empty.")]
         public string? UserName { get; set; }
         [EmailAddress]
         public string? Email { get; set; }
         public string? Address { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Gender is required.")]
         public GenderEnum? Gender { get; set; }
         public string? Password { get; set; }
         [PhoneValidation]
         public string? Phone { get; set; }
     }
-
 }
