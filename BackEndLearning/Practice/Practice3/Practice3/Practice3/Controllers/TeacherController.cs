@@ -81,8 +81,10 @@ namespace Practice3.Controllers
             return new JsonResult("ModelState.IsValid false");
         }
         #endregion
+
+        #region Put
         [HttpPut("json")]
-        public JsonResult PutJson([FromBody]Teacher teacher)
+        public JsonResult PutJson([FromBody] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
@@ -112,11 +114,20 @@ namespace Practice3.Controllers
             }
             return new JsonResult("ModelState.IsValid false");
         }
-        #region Put
-
         #endregion
 
         #region Delete
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == id);
+            if (_teacher == null)
+            {
+                return new JsonResult("Teacher not found");
+            }
+            Teachers.Remove(_teacher);
+            return new JsonResult(_teacher);
+        }
         #endregion
     }
 }
