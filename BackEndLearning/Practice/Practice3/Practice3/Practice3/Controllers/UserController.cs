@@ -53,34 +53,14 @@ namespace Practice3.Controllers
         //}
         public JsonResult AddUserFromBody([FromBody] User user)
         {
-            if (ModelState.IsValid)
-            {
-                var _user = Users.FirstOrDefault(u => u.UserId == user.UserId);
-                if (_user == null)
-                {
-                    Users.Add(user);
-                    return new JsonResult(user);
-                }
-                return new JsonResult("UserId has been taken");
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return AddUser(user);
         }
 
         [HttpPost]
         //http://localhost:5289/api/user/AddUserFromForm
         public JsonResult AddUserFromForm([FromForm] User user)
         {
-            if (ModelState.IsValid)
-            {
-                var _user = Users.FirstOrDefault(u => u.UserId == user.UserId);
-                if (_user == null)
-                {
-                    Users.Add(user);
-                    return new JsonResult(user);
-                }
-                return new JsonResult("UserId has been taken");
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return AddUser(user);
         }
         #endregion
 
@@ -89,34 +69,14 @@ namespace Practice3.Controllers
         //http://localhost:5289/api/user/UpdateUserFromBody
         public JsonResult UpdateUserFromBody([FromBody] User user)
         {
-            if (ModelState.IsValid)
-            {
-                var _userIndex = Users.FindIndex(u => u.UserId == user.UserId);
-                if (_userIndex == -1)
-                {
-                    return new JsonResult("User not found");
-                }
-                Users[_userIndex] = user;
-                return new JsonResult(user);
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return UpdateUser(user);
         }
 
         [HttpPut]
         //http://localhost:5289/api/user/UpdateUserFromForm
         public JsonResult UpdateUserFromForm([FromForm] User user)
         {
-            if (ModelState.IsValid)
-            {
-                var _userIndex = Users.FindIndex(u => u.UserId == user.UserId);
-                if (_userIndex == -1)
-                {
-                    return new JsonResult("User not found");
-                }
-                Users[_userIndex] = user;
-                return new JsonResult(user);
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return UpdateUser(user);
         }
         #endregion
 
@@ -132,6 +92,38 @@ namespace Practice3.Controllers
             }
             Users.Remove(_user);
             return new JsonResult(_user);
+        }
+        #endregion
+
+        #region Helper Method
+        private JsonResult AddUser(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var _user = Users.FirstOrDefault(u => u.UserId == user.UserId);
+                if (_user == null)
+                {
+                    Users.Add(user);
+                    return new JsonResult(user);
+                }
+                return new JsonResult("UserId has been taken");
+            }
+            return new JsonResult("ModelState.IsValid false");
+        }
+
+        private JsonResult UpdateUser(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var _userIndex = Users.FindIndex(u => u.UserId == user.UserId);
+                if (_userIndex == -1)
+                {
+                    return new JsonResult("User not found");
+                }
+                Users[_userIndex] = user;
+                return new JsonResult(user);
+            }
+            return new JsonResult("ModelState.IsValid false");
         }
         #endregion
     }

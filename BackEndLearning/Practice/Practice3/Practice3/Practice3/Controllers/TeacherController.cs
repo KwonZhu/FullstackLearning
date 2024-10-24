@@ -51,34 +51,14 @@ namespace Practice3.Controllers
         //}
         public JsonResult PostJson([FromBody] Teacher teacher)
         {
-            if (ModelState.IsValid)
-            {
-                var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
-                if (_teacher == null)
-                {
-                    Teachers.Add(teacher);
-                    return new JsonResult(teacher);
-                }
-                return new JsonResult("TeacherId has been taken");
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return AddTeacher(teacher);
         }
 
         [HttpPost("form")]
         //http://localhost:5289/api/teacher/form
         public JsonResult PostForm([FromForm] Teacher teacher)
         {
-            if (ModelState.IsValid)
-            {
-                var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
-                if (_teacher == null)
-                {
-                    Teachers.Add(teacher);
-                    return new JsonResult(teacher);
-                }
-                return new JsonResult("TeacherId has been taken");
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return AddTeacher(teacher);
         }
         #endregion
 
@@ -86,33 +66,13 @@ namespace Practice3.Controllers
         [HttpPut("json")]
         public JsonResult PutJson([FromBody] Teacher teacher)
         {
-            if (ModelState.IsValid)
-            {
-                var _teacherIndex = Teachers.FindIndex(u => u.TeacherId == teacher.TeacherId);
-                if (_teacherIndex == -1)
-                {
-                    return new JsonResult("User not found");
-                }
-                Teachers[_teacherIndex] = teacher;
-                return new JsonResult(teacher);
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return UpdateTeacher(teacher);
         }
 
         [HttpPut("form")]
         public JsonResult PutForm([FromForm] Teacher teacher)
         {
-            if (ModelState.IsValid)
-            {
-                var _teacherIndex = Teachers.FindIndex(u => u.TeacherId == teacher.TeacherId);
-                if (_teacherIndex == -1)
-                {
-                    return new JsonResult("User not found");
-                }
-                Teachers[_teacherIndex] = teacher;
-                return new JsonResult(teacher);
-            }
-            return new JsonResult("ModelState.IsValid false");
+            return UpdateTeacher(teacher);
         }
         #endregion
 
@@ -127,6 +87,39 @@ namespace Practice3.Controllers
             }
             Teachers.Remove(_teacher);
             return new JsonResult(_teacher);
+        }
+        #endregion
+
+        #region Helper Method
+        //make codes DRY
+        private JsonResult AddTeacher(Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
+                if (_teacher == null)
+                {
+                    Teachers.Add(teacher);
+                    return new JsonResult(teacher);
+                }
+                return new JsonResult("TeacherId has been taken");
+            }
+            return new JsonResult("ModelState.IsValid false");
+        }
+
+        public JsonResult UpdateTeacher(Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                var _teacherIndex = Teachers.FindIndex(u => u.TeacherId == teacher.TeacherId);
+                if (_teacherIndex == -1)
+                {
+                    return new JsonResult("User not found");
+                }
+                Teachers[_teacherIndex] = teacher;
+                return new JsonResult(teacher);
+            }
+            return new JsonResult("ModelState.IsValid false");
         }
         #endregion
     }
