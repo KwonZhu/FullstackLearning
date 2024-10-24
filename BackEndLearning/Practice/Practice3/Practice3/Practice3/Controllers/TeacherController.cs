@@ -26,7 +26,7 @@ namespace Practice3.Controllers
 
         //query string parameters
         [HttpGet]
-        public JsonResult Get([FromQuery]string specialty = null)
+        public JsonResult Get([FromQuery] string specialty = null)
         {
             //checkt query string parameters
             if (!string.IsNullOrEmpty(specialty))
@@ -41,7 +41,7 @@ namespace Practice3.Controllers
 
         #region Post
         [HttpPost("json")]
-        //http://localhost:5289/api/teacher//json
+        //http://localhost:5289/api/teacher/json
         //{
         //    "TeacherId": "4",
         //    "Department": "FrontEnd", 
@@ -49,7 +49,7 @@ namespace Practice3.Controllers
         //    "Specialty": "java", 
         //    "UserId": "1"
         //}
-    public JsonResult PostJson([FromBody] Teacher teacher)
+        public JsonResult PostJson([FromBody] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
@@ -81,8 +81,39 @@ namespace Practice3.Controllers
             return new JsonResult("ModelState.IsValid false");
         }
         #endregion
+        [HttpPut("json")]
+        public JsonResult PutJson([FromBody]Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                var _teacherIndex = Teachers.FindIndex(u => u.TeacherId == teacher.TeacherId);
+                if (_teacherIndex == -1)
+                {
+                    return new JsonResult("User not found");
+                }
+                Teachers[_teacherIndex] = teacher;
+                return new JsonResult(teacher);
+            }
+            return new JsonResult("ModelState.IsValid false");
+        }
 
+        [HttpPut("form")]
+        public JsonResult PutForm([FromForm] Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                var _teacherIndex = Teachers.FindIndex(u => u.TeacherId == teacher.TeacherId);
+                if (_teacherIndex == -1)
+                {
+                    return new JsonResult("User not found");
+                }
+                Teachers[_teacherIndex] = teacher;
+                return new JsonResult(teacher);
+            }
+            return new JsonResult("ModelState.IsValid false");
+        }
         #region Put
+
         #endregion
 
         #region Delete
