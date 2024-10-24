@@ -10,17 +10,12 @@ namespace Practice3.Controllers
     {
         public static List<Teacher> Teachers = new List<Teacher>()
         {
-            new Teacher {TeacherId = 1, Department = "FrontEnd", Description = "FrontEnd teacher", Specialty = "javascript", UserId=1},
-            new Teacher { TeacherId = 2, Department = "BackEnd", Description = "BackEnd teacher", Specialty = "c#", UserId=2 },
-               new Teacher { TeacherId = 3, Department = "FrontEnd", Description = "FrontEnd tutor", Specialty = "react", UserId=3 },
+            new Teacher { TeacherId = 1, Department = "FrontEnd", Description = "FrontEnd teacher", Specialty = "javascript", UserId = 1},
+            new Teacher { TeacherId = 2, Department = "BackEnd", Description = "BackEnd teacher", Specialty = "c#", UserId = 2 },
+            new Teacher { TeacherId = 3, Department = "FrontEnd", Description = "FrontEnd tutor", Specialty = "react", UserId = 3 },
         };
 
         #region Get
-        [HttpGet]
-        public JsonResult Get()
-        {
-            return new JsonResult(Teachers);
-        }
         [HttpGet("{id}")]
         //http://localhost:5289/api/teacher/1
         public JsonResult Get(int id)
@@ -28,9 +23,69 @@ namespace Practice3.Controllers
             var teacher = Teachers.FirstOrDefault(t => t.TeacherId == id);
             return new JsonResult(teacher == null ? "Teacher not found" : teacher);
         }
+
+        //query string parameters
+        [HttpGet]
+        public JsonResult Get([FromQuery]string specialty = null)
+        {
+            //checkt query string parameters
+            if (!string.IsNullOrEmpty(specialty))
+            {
+                var teacher = Teachers.FirstOrDefault(t => t.Specialty == specialty);
+                return new JsonResult(teacher == null ? "Teacher not found" : teacher);
+            }
+            //return all
+            return new JsonResult(Teachers);
+        }
         #endregion
 
-        #region
+        #region Post
+        [HttpPost("json")]
+        //http://localhost:5289/api/teacher//json
+        //{
+        //    "TeacherId": "4",
+        //    "Department": "FrontEnd", 
+        //    "Description": "BackEnd tutor", 
+        //    "Specialty": "java", 
+        //    "UserId": "1"
+        //}
+    public JsonResult PostJson([FromBody] Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
+                if (_teacher == null)
+                {
+                    Teachers.Add(teacher);
+                    return new JsonResult(teacher);
+                }
+                return new JsonResult("TeacherId has been taken");
+            }
+            return new JsonResult("ModelState.IsValid false");
+        }
+
+        [HttpPost("form")]
+        //http://localhost:5289/api/teacher/form
+        public JsonResult PostForm([FromForm] Teacher teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
+                if (_teacher == null)
+                {
+                    Teachers.Add(teacher);
+                    return new JsonResult(teacher);
+                }
+                return new JsonResult("TeacherId has been taken");
+            }
+            return new JsonResult("ModelState.IsValid false");
+        }
+        #endregion
+
+        #region Put
+        #endregion
+
+        #region Delete
         #endregion
     }
 }

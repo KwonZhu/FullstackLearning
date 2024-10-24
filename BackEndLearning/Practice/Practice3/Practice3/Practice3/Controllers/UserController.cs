@@ -86,6 +86,7 @@ namespace Practice3.Controllers
 
         #region Put
         [HttpPut]
+        //http://localhost:5289/api/user/UpdateUserFromBody
         public JsonResult UpdateUserFromBody([FromBody] User user)
         {
             if (ModelState.IsValid)
@@ -102,6 +103,7 @@ namespace Practice3.Controllers
         }
 
         [HttpPut]
+        //http://localhost:5289/api/user/UpdateUserFromForm
         public JsonResult UpdateUserFromForm([FromForm] User user)
         {
             if (ModelState.IsValid)
@@ -120,6 +122,7 @@ namespace Practice3.Controllers
 
         #region Delete
         //DeleteUserByEmail
+        //http://localhost:5289/api/user/DeleteUserByEmail?email=Mike@gmail.com
         public JsonResult DeleteUserByEmail(string email)
         {
             var _user = Users.FirstOrDefault(u => u.Email == email);
