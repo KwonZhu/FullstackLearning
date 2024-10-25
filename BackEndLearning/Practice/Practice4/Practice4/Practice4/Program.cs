@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Practice4.Filters;
 
 namespace Practice4
 {
@@ -13,6 +14,11 @@ namespace Practice4
             builder.Services.AddControllers();
 
             builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+
+            builder.Services.AddControllers(options => 
+            {
+                options.Filters.Add<ExceptionFilter>();
+            });
 
             var app = builder.Build();
 
