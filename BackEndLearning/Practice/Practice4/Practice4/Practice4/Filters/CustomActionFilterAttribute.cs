@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System.Text.Json;
 
 namespace Practice4.Filters
@@ -8,11 +9,8 @@ namespace Practice4.Filters
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             string fullName = context.ActionDescriptor.DisplayName;
-            // Splitting fullName based on the . and ()
-            var parts = fullName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            string controllerName = parts[parts.Length - 2]; // This will give "UserController"
-            string actionName = parts[parts.Length - 1].Split(' ')[0]; // This will give "GetUserInfoById"
-            Console.WriteLine($"Controller Name: {controllerName}, Action Name: {actionName}");
+            var actionName = fullName.Split('.').Last().Split(' ')[0];
+            Console.WriteLine($"Action Name: {actionName}");
 
             // Obtain the action parameters (name-value pairs of parameters) and serialize them to JSON format
             var actionParameters = context.ActionArguments;
