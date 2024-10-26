@@ -26,8 +26,8 @@ namespace Practice4.Controllers
             var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == id);
             if (_teacher == null)
             {
-                throw new NotFoundException("Teacher not found");
-                //return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = "Teacher not found" };
+                //throw new NotFoundException("Teacher not found");  //this is only for ExceptionFilter
+                return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = "Teacher not found" };
             }
 
             return new CommonResult<Teacher>() { Success = true, Message = "Success", Data = _teacher };
@@ -44,8 +44,8 @@ namespace Practice4.Controllers
                 var _teacher = Teachers.FirstOrDefault(t => t.Specialty == specialty);
                 if (_teacher == null)
                 {
-                    throw new NotFoundException("Teacher not found");
-                    //return new CommonResult<List<Teacher>>() { Success = false, Message = "Failed", Error = "Teacher not found" };
+                    //throw new NotFoundException("Teacher not found");  //this is only for ExceptionFilter
+                    return new CommonResult<List<Teacher>>() { Success = false, Message = "Failed", Error = "Teacher not found" };
                 }
 
                 return new CommonResult<List<Teacher>>() { Success = true, Message = "Success", Data = new List<Teacher> { _teacher } };
@@ -100,8 +100,8 @@ namespace Practice4.Controllers
             var _teacher = Teachers.FirstOrDefault(t => t.TeacherId == id);
             if (_teacher == null)
             {
-                throw new NotFoundException("Teacher not found");
-                //return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = "Teacher not found" };
+                //throw new NotFoundException("Teacher not found");  //this is only for ExceptionFilter
+                return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = "Teacher not found" };
             }
             Teachers.Remove(_teacher);
             return new CommonResult<Teacher>() { Success = true, Message = "Success", Data = _teacher };
@@ -120,8 +120,8 @@ namespace Practice4.Controllers
                     Teachers.Add(teacher);
                     return new CommonResult<Teacher>() { Success = true, Message = "Success", Data = teacher };
                 }
-                throw new NotFoundException("TeacherId has been taken");
-                //return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = "TeacherId has been taken" };
+                //throw new NotFoundException("TeacherId has been taken");  //this is only for ExceptionFilter
+                return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = "TeacherId has been taken" };
             }
             StringBuilder errors = new StringBuilder();
             foreach (var key in ModelState.Keys)
@@ -133,8 +133,8 @@ namespace Practice4.Controllers
                 }
                 errors.AppendLine();
             }
-            throw new NotFoundException(errors.ToString());
-            //return new CommonResult<Teacher>() { Success = false, Message = errors.ToString() };
+            //throw new NotFoundException(errors.ToString());  //this is only for ExceptionFilter
+            return new CommonResult<Teacher>() { Success = false, Message = errors.ToString() };
         }
 
         public CommonResult<Teacher> UpdateTeacher(Teacher teacher)
@@ -144,8 +144,8 @@ namespace Practice4.Controllers
                 var _teacherIndex = Teachers.FindIndex(u => u.TeacherId == teacher.TeacherId);
                 if (_teacherIndex == -1)
                 {
-                    throw new NotFoundException("Teacher not found");
-                    //return new CommonResult<Teacher> { Success = false, Message = "Failed", Error = "Teacher not found" }; 
+                    //throw new NotFoundException("Teacher not found");  //this is only for ExceptionFilter
+                    return new CommonResult<Teacher> { Success = false, Message = "Failed", Error = "Teacher not found" };
                 }
                 Teachers[_teacherIndex] = teacher;
                 return new CommonResult<Teacher> { Success = true, Message = "Success", Data = teacher };
@@ -160,8 +160,8 @@ namespace Practice4.Controllers
                 }
                 errors.AppendLine();
             }
-            throw new NotFoundException(errors.ToString());
-            //return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = errors.ToString() };
+            //throw new NotFoundException(errors.ToString());  //this is only for ExceptionFilter
+            return new CommonResult<Teacher>() { Success = false, Message = "Failed", Error = errors.ToString() };
         }
         #endregion
     }

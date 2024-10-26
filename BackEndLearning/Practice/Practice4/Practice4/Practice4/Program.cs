@@ -17,7 +17,8 @@ namespace Practice4
 
             builder.Services.AddControllers(options => 
             {
-                options.Filters.Add<ExceptionFilter>();
+                //options.Filters.Add<ExceptionFilter>();
+                options.Filters.Add<ResultFilter>();
             });
 
             var app = builder.Build();

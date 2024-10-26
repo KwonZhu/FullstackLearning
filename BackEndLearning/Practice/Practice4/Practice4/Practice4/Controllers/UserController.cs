@@ -34,8 +34,8 @@ namespace Practice4.Controllers
             var _user = Users.FirstOrDefault(u => u.UserId == id);
             if (_user == null)
             {
-                throw new NotFoundException("User not found");
-                //return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
+                //throw new NotFoundException("User not found"); //this is only for ExceptionFilter
+                return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
             }
             return new CommonResult<User>() { Success = true, Message = "Success", Data = _user };
         }
@@ -48,8 +48,8 @@ namespace Practice4.Controllers
             var _user = Users.FirstOrDefault(u => u.Email == email);
             if (_user == null)
             {
-                throw new NotFoundException("User not found");
-                //return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
+                //throw new NotFoundException("User not found");  //this is only for ExceptionFilter
+                return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
             }
             return new CommonResult<User>() { Success = true, Message = "Success", Data = _user };
 
@@ -105,8 +105,8 @@ namespace Practice4.Controllers
             var _user = Users.FirstOrDefault(u => u.Email == email);
             if (_user == null)
             {
-                throw new NotFoundException("User not found");
-                //return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
+                //throw new NotFoundException("User not found");  //this is only for ExceptionFilter
+                return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
             }
             Users.Remove(_user);
             return new CommonResult<User>() { Success = true, Message = "Success", Data = _user };
@@ -124,8 +124,8 @@ namespace Practice4.Controllers
                     Users.Add(user);
                     return new CommonResult<User>() { Success = true, Message = "Success", Data = user };
                 }
-                throw new NotFoundException("UserId has been taken");
-                //return new CommonResult<User>() { Success = false, Message = "Failed", Error = "UserId has been taken" };
+                //throw new NotFoundException("UserId has been taken");  //this is only for ExceptionFilter
+                return new CommonResult<User>() { Success = false, Message = "Failed", Error = "UserId has been taken" };
             }
             StringBuilder errors = new StringBuilder();
             foreach (var key in ModelState.Keys)
@@ -137,8 +137,8 @@ namespace Practice4.Controllers
                 }
                 errors.AppendLine();
             }
-            throw new NotFoundException(errors.ToString());
-            //return new CommonResult<User>() { Success = false, Message = "Failed", Error = errors.ToString() };
+            //throw new NotFoundException(errors.ToString());  //this is only for ExceptionFilter
+            return new CommonResult<User>() { Success = false, Message = "Failed", Error = errors.ToString() };
         }
 
         private CommonResult<User> UpdateUser(User user)
@@ -148,8 +148,8 @@ namespace Practice4.Controllers
                 var _userIndex = Users.FindIndex(u => u.UserId == user.UserId);
                 if (_userIndex == -1)
                 {
-                    throw new NotFoundException("User not found");
-                    //return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
+                    //throw new NotFoundException("User not found");  //this is only for ExceptionFilter
+                    return new CommonResult<User>() { Success = false, Message = "Failed", Error = "User not found" };
                 }
                 Users[_userIndex] = user;
                 return new CommonResult<User>() { Success = true, Message = "Success", Data = user };
@@ -164,8 +164,8 @@ namespace Practice4.Controllers
                 }
                 errors.AppendLine();
             }
-            throw new NotFoundException(errors.ToString());
-            //return new CommonResult<User>() { Success = false, Message = "Failed", Error = errors.ToString() };
+            //throw new NotFoundException(errors.ToString());  //this is only for ExceptionFilter
+            return new CommonResult<User>() { Success = false, Message = "Failed", Error = errors.ToString() };
         }
         #endregion
     }
