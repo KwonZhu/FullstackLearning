@@ -144,17 +144,19 @@ WHERE CustomerID = 1;
 DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
 ```
 
-# Select Top
+# Select Limit
 
 [//]: # 'the first 3 records'
 
 ```
-SELECT TOP 3 * FROM Customers;
+SELECT * FROM Customers
+LIMIT 3;
 ```
 
 ```
-SELECT TOP 3 * FROM Customers
-WHERE Country='Germany';
+SELECT * FROM Customers
+WHERE Country = 'Germany'
+LIMIT 3;
 ```
 
 # SQL Aggregate Functions(MIN(), MAX(), COUNT(), SUM(), AVG()) often used with the GROUP BY clause of the SELECT statement
@@ -246,8 +248,6 @@ ORDER BY Customers.CustomerName;
 
 ## RIGHT JOIN
 
-## FULL OUTER JOIN
-
 # HAVING was added to SQL because the WHERE keyword cannot be used with aggregate functions
 
 [//]: # (return the number of customers in each country, sorted high to low (Only include countries with more than 5 customers))
@@ -260,11 +260,11 @@ HAVING COUNT(CustomerID) > 5
 ORDER BY COUNT(CustomerID) DESC;
 ```
 
-# SELECT INTO copies data from one table into a new table
+# CREATE TABLE ... AS SELECT copies data from one table into a new table
 
 ```
+CREATE TABLE newtable AS
 SELECT column1, column2, column3, ...
-INTO newtable
 FROM oldtable
 WHERE condition;
 ```
@@ -286,38 +286,68 @@ FROM OrderDetails;
 ## No parameters
 
 ```
-CREATE PROCEDURE SelectAllCustomers
-AS
-SELECT * FROM Customers
-GO;
+DELIMITER //
+CREATE PROCEDURE GetAllStudents()
+BEGIN
+    SELECT * FROM students;
+END //
+DELIMITER ;
 ```
 
 ```
-EXEC SelectAllCustomers;
+CALL GetAllStudents();
 ```
 
 ## With Parameters
 
 ```
-CREATE PROCEDURE SelectAllCustomers @City nvarchar(30)
-AS
-SELECT * FROM Customers WHERE City = @City
-GO;
+DELIMITER //
+CREATE PROCEDURE GetStudentById (IN studentID INT)
+BEGIN
+    SELECT * FROM students WHERE student_id = studentID;
+END //
+DELIMITER ;
 ```
 
 ```
-EXEC SelectAllCustomers @City = 'London';
+CALL GetStudentById(1);
+```
+
+[//]: # 'IN means that these values will be provided as input when calling the procedure'
+
+```
+DELIMITER //
+CREATE PROCEDURE AddStudent(IN first_name VARCHAR(50), IN last_name VARCHAR(50), IN major VARCHAR(50))
+BEGIN
+    INSERT INTO students (first_name, last_name, major)
+    VALUES (first_name, last_name, major);
+END //
+DELIMITER ;
 ```
 
 ```
-CREATE PROCEDURE SelectAllCustomers @City nvarchar(30), @PostalCode nvarchar(10)
-AS
-SELECT * FROM Customers WHERE City = @City AND PostalCode = @PostalCode
-GO;
+CALL AddStudent('John', 'Doe', 'Mathematics');
+```
+
+[//]: # 'OUT is to return a value'
+
+```
+DELIMITER //
+CREATE PROCEDURE getStudentFullName(IN student_id INT, OUT full_name VARCHAR(100))
+BEGIN
+    SELECT CONCAT(first_name, ' ', last_name) INTO full_name
+    FROM students
+    WHERE student_id = student_id;
+END //
+DELIMITER ;
 ```
 
 ```
-EXEC SelectAllCustomers @City = 'London', @PostalCode = 'WA1 1DP';
+SET @full_name = '';
+CALL getStudentFullName(1, @full_name);
+
+-- Display the result
+SELECT @full_name;
 ```
 
 # Primary Key and Foreign Key
@@ -329,20 +359,6 @@ CREATE TABLE Orders (
     PersonID int,
     PRIMARY KEY (OrderID),
     FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
-);
-```
-
-# Check
-
-[//]: # 'start from 1, it will increment by 1 for each new recordx'
-
-```
-CREATE TABLE Persons (
-    ID int NOT NULL,
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255),
-    Age int,
-    CHECK (Age>=18)
 );
 ```
 
