@@ -16,12 +16,12 @@ namespace Practice5.Services
         }
         public bool AddUser(User user)
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection)) 
+            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string insertSql = "insert into user(userName,password,email,age,gender,active,address) value(@userName,@password,@email,@age,@gender,@active,@address)";
+                string insertSql = "insert into user(userName,password,email,age,gender,active,address,phone) value(@userName,@password,@email,@age,@gender,@active,@address,@phone)";
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
-                { 
+                {
                     mySqlCommand.CommandText = insertSql;
                     mySqlCommand.Parameters.AddWithValue("@userName", user.UserName);
                     mySqlCommand.Parameters.AddWithValue("@password", user.Password);
@@ -30,6 +30,7 @@ namespace Practice5.Services
                     mySqlCommand.Parameters.AddWithValue("@gender", user.Gender);
                     mySqlCommand.Parameters.AddWithValue("@active", user.Active);
                     mySqlCommand.Parameters.AddWithValue("@address", user.Address);
+                    mySqlCommand.Parameters.AddWithValue("@phone", user.Phone);
                     var count = mySqlCommand.ExecuteNonQuery();
                     return count > 0;
                 }
