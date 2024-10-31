@@ -46,13 +46,14 @@ namespace Practice5.Controllers
                 Gender = input.Gender,
                 Address = input.Address,
                 Phone = input.Phone
-
             };
+
             var success = this._userService.AddUser(user);
             commonResult.Success = success;
             return commonResult;
         }
 
+        [HttpGet]
         public List<UserOutput> GetUsers()
         {
             var List = this._userService.GetUsers();
@@ -65,6 +66,42 @@ namespace Practice5.Controllers
                 userList.Add(userOutput);
             }
             return userList;
+        }
+
+        [HttpPut]
+        public CommonResult UpdateUsers(UpdateUserInput input)
+        {
+            CommonResult commonResult = new CommonResult();
+            if (!ModelState.IsValid)
+            {
+                commonResult.Success = false;
+                commonResult.Message = "Validaitons are failed";
+
+                foreach (var value in ModelState.Values)
+                {
+                    foreach (var error in value.Errors)
+                    {
+                        commonResult.Errors.Add(error.ErrorMessage);
+                    }
+                }
+                return commonResult;
+            }
+            var user = new User()
+            {
+                Id = input.Id,
+                UserName = input.UserName,
+                Password = input.Password,
+                Email = input.Email,
+                Age = input.Age,
+                Gender = input.Gender,
+                Address = input.Address,
+                Phone = input.Phone
+            };
+
+            var success = this._userService.UpdateUsers(user);
+            commonResult.Success = success;
+            commonResult.Message = success ? "User updated successfully" : "User update failed";
+            return commonResult;
         }
 
         public CommonResult ExceptionTest()

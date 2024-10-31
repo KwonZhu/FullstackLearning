@@ -7,7 +7,7 @@ namespace Practice5.IServices
         bool AddUser(User user);
         List<User> GetUsers();
 
-        //bool UpdateUsers(User user);
+        bool UpdateUsers(User user);
 
         //bool DeleteUser(int id);
     }

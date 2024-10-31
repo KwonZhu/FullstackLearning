@@ -60,5 +60,44 @@ namespace Practice5.Services
             }
             return users;
         }
+
+        public bool UpdateUsers(User user)
+        {
+            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection)) 
+            { 
+                mySqlConnection.Open(); 
+                string querySql = "SELECT id FROM user WHERE id = @id";
+                string updateSql = "UPDATE user SET username = @username, password = @password, email = @email, age = @age, gender = @gender, address = @address, phone = @phone WHERE id = @id";
+
+                using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
+                { 
+                    // check if user exists
+                    mySqlCommand.CommandText = querySql;
+                    mySqlCommand.Parameters.AddWithValue("@id",user.Id);
+                    using (var reader = mySqlCommand.ExecuteReader()) 
+                    {
+                        if (!reader.HasRows)
+                        {
+                            return false;
+                        }
+                    }
+
+                    // Reset parameters and prepare for update
+                    mySqlCommand.Parameters.Clear();
+                    mySqlCommand.CommandText=updateSql;
+                    mySqlCommand.Parameters.AddWithValue("@id", user.Id);
+                    mySqlCommand.Parameters.AddWithValue("@username", user.UserName);
+                    mySqlCommand.Parameters.AddWithValue("@password", user.Password);
+                    mySqlCommand.Parameters.AddWithValue("@email", user.Email);
+                    mySqlCommand.Parameters.AddWithValue("@age", user.Age);
+                    mySqlCommand.Parameters.AddWithValue("@gender", user.Gender);
+                    mySqlCommand.Parameters.AddWithValue("@address", user.Address);
+                    mySqlCommand.Parameters.AddWithValue("@phone", user.Phone);
+
+                    var count = mySqlCommand.ExecuteNonQuery();
+                    return count > 0;
+                }
+            }
+        }
     }
 }
