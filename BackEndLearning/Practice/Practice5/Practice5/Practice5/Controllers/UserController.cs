@@ -53,6 +53,20 @@ namespace Practice5.Controllers
             return commonResult;
         }
 
+        public List<UserOutput> GetUsers()
+        {
+            var List = this._userService.GetUsers();
+            List<UserOutput> userList = new List<UserOutput>();
+            foreach (var user in List)
+            {
+                UserOutput userOutput = new UserOutput();
+                userOutput.UserName = user.UserName;
+                userOutput.Email = user.Email;  
+                userList.Add(userOutput);
+            }
+            return userList;
+        }
+
         public CommonResult ExceptionTest()
         {
             CommonResult commonResult = new CommonResult();

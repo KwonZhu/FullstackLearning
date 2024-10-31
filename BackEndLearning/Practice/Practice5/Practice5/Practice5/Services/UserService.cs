@@ -28,7 +28,7 @@ namespace Practice5.Services
                     mySqlCommand.Parameters.AddWithValue("@email", user.Email);
                     mySqlCommand.Parameters.AddWithValue("@age", user.Age);
                     mySqlCommand.Parameters.AddWithValue("@gender", user.Gender);
-                    mySqlCommand.Parameters.AddWithValue("@active", user.Active);
+                    mySqlCommand.Parameters.AddWithValue("@active", !user.Active);
                     mySqlCommand.Parameters.AddWithValue("@address", user.Address);
                     mySqlCommand.Parameters.AddWithValue("@phone", user.Phone);
                     var count = mySqlCommand.ExecuteNonQuery();
@@ -37,5 +37,28 @@ namespace Practice5.Services
             }
         }
 
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
+            {
+                mySqlConnection.Open();
+                string sql = "select * from user";
+                using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
+                {
+                    mySqlCommand.CommandText = sql;
+                    var rd = mySqlCommand.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        User user = new User();
+                        user.UserName = rd.GetString("username");
+                        user.Email = rd.GetString("email");
+                        users.Add(user);
+                    }
+                    rd.Close();
+                }
+            }
+            return users;
+        }
     }
 }
