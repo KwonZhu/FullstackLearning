@@ -1,9 +1,10 @@
 ﻿using Practice5.Enum;
+using Practice5.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace Practice5.ViewModels
 {
-    public class UserInput
+    public class UserInput : BaseModel
     {
         [Required(ErrorMessage = "User name can't be null")]
         public string UserName { get; set; }
