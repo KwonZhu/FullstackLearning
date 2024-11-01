@@ -20,8 +20,8 @@ builder.Services.AddControllers(options =>
 {
     //global filter register, working for all actions
     //options.Filters.Add<ActionFilter>();
-    options.Filters.Add<ExceptionFilter>();
-    //options.Filters.Add<ResultFilter>();
+    //options.Filters.Add<ExceptionFilter>();
+    options.Filters.Add<ResultFilter>();
 });
 
 var app = builder.Build();

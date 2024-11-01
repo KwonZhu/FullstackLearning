@@ -63,6 +63,8 @@ namespace Practice5.Controllers
                 UserOutput userOutput = new UserOutput();
                 userOutput.UserName = user.UserName;
                 userOutput.Email = user.Email;  
+                userOutput.Id = user.Id;
+                userOutput.Active = user.Active;
                 userList.Add(userOutput);
             }
             return userList;
@@ -95,7 +97,7 @@ namespace Practice5.Controllers
                 Age = input.Age,
                 Gender = input.Gender,
                 Address = input.Address,
-                Phone = input.Phone
+                Phone = input.Phone,
             };
 
             var success = this._userService.UpdateUsers(user);

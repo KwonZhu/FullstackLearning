@@ -53,6 +53,8 @@ namespace Practice5.Services
                         User user = new User();
                         user.UserName = rd.GetString("username");
                         user.Email = rd.GetString("email");
+                        user.Id = rd.GetInt32("id");
+                        user.Active = rd.GetBoolean("active");
                         users.Add(user);
                     }
                     rd.Close();
@@ -66,8 +68,8 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string querySql = "SELECT id FROM user WHERE id = @id";
-                string updateSql = "UPDATE user SET username = @username, password = @password, email = @email, age = @age, gender = @gender, address = @address, phone = @phone WHERE id = @id";
+                string querySql = "select id from user where id = @id";
+                string updateSql = "update user set username = @username, password = @password, email = @email, age = @age, gender = @gender, address = @address, phone = @phone where id = @id";
 
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
@@ -105,7 +107,7 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string deleteSql = "DELETE FROM user WHERE id = @id";
+                string deleteSql = "delete from user where id = @id";
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
                     mySqlCommand.CommandText = deleteSql;
