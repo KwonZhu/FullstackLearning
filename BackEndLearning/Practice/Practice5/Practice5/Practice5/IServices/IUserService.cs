@@ -9,6 +9,6 @@ namespace Practice5.IServices
 
         bool UpdateUsers(User user);
 
-        //bool DeleteUser(int id);
+        bool DeleteUser(int id);
     }
 }

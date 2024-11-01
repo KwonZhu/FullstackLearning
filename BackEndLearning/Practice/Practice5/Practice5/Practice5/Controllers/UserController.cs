@@ -104,6 +104,17 @@ namespace Practice5.Controllers
             return commonResult;
         }
 
+        [HttpDelete("{id}")]
+        public CommonResult DeleteUsers(int id) 
+        { 
+            CommonResult commonResult = new CommonResult();
+            var success = this._userService.DeleteUser(id);
+            commonResult.Success = success;
+            commonResult.Message = success ? "User deleted successfully" : "User not found or deletion failed";
+            return commonResult;
+
+        }
+
         public CommonResult ExceptionTest()
         {
             CommonResult commonResult = new CommonResult();

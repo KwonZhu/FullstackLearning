@@ -31,8 +31,8 @@ namespace Practice5.Services
                     mySqlCommand.Parameters.AddWithValue("@active", !user.Active);
                     mySqlCommand.Parameters.AddWithValue("@address", user.Address);
                     mySqlCommand.Parameters.AddWithValue("@phone", user.Phone);
-                    var count = mySqlCommand.ExecuteNonQuery();
-                    return count > 0;
+                    var rowsAffected = mySqlCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
                 }
             }
         }
@@ -63,18 +63,18 @@ namespace Practice5.Services
 
         public bool UpdateUsers(User user)
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection)) 
-            { 
-                mySqlConnection.Open(); 
+            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
+            {
+                mySqlConnection.Open();
                 string querySql = "SELECT id FROM user WHERE id = @id";
                 string updateSql = "UPDATE user SET username = @username, password = @password, email = @email, age = @age, gender = @gender, address = @address, phone = @phone WHERE id = @id";
 
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
-                { 
+                {
                     // check if user exists
                     mySqlCommand.CommandText = querySql;
-                    mySqlCommand.Parameters.AddWithValue("@id",user.Id);
-                    using (var reader = mySqlCommand.ExecuteReader()) 
+                    mySqlCommand.Parameters.AddWithValue("@id", user.Id);
+                    using (var reader = mySqlCommand.ExecuteReader())
                     {
                         if (!reader.HasRows)
                         {
@@ -84,7 +84,7 @@ namespace Practice5.Services
 
                     // Reset parameters and prepare for update
                     mySqlCommand.Parameters.Clear();
-                    mySqlCommand.CommandText=updateSql;
+                    mySqlCommand.CommandText = updateSql;
                     mySqlCommand.Parameters.AddWithValue("@id", user.Id);
                     mySqlCommand.Parameters.AddWithValue("@username", user.UserName);
                     mySqlCommand.Parameters.AddWithValue("@password", user.Password);
@@ -94,10 +94,28 @@ namespace Practice5.Services
                     mySqlCommand.Parameters.AddWithValue("@address", user.Address);
                     mySqlCommand.Parameters.AddWithValue("@phone", user.Phone);
 
-                    var count = mySqlCommand.ExecuteNonQuery();
-                    return count > 0;
+                    var rowsAffected = mySqlCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+
+        public bool DeleteUser(int id)
+        {
+            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
+            {
+                mySqlConnection.Open();
+                string deleteSql = "DELETE FROM user WHERE id = @id";
+                using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
+                {
+                    mySqlCommand.CommandText = deleteSql;
+                    mySqlCommand.Parameters.AddWithValue("@id", id);
+                    var rowsAffected = mySqlCommand.ExecuteNonQuery();
+                    return rowsAffected > 0;
                 }
             }
         }
     }
 }
+
+
