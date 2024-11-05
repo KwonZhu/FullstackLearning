@@ -64,7 +64,6 @@ namespace Practice5.Controllers
                 userOutput.UserName = user.UserName;
                 userOutput.Email = user.Email;  
                 userOutput.Id = user.Id;
-                userOutput.Active = user.Active;
                 userList.Add(userOutput);
             }
             return userList;

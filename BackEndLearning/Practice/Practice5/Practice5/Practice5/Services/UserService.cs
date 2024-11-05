@@ -19,7 +19,7 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string insertSql = "insert into user(userName,password,email,age,gender,active,address,phone) value(@userName,@password,@email,@age,@gender,@active,@address,@phone)";
+                string insertSql = "insert into user(userName,password,email,age,gender,address,phone) value(@userName,@password,@email,@age,@gender,@address,@phone)";
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
                     mySqlCommand.CommandText = insertSql;
@@ -28,7 +28,6 @@ namespace Practice5.Services
                     mySqlCommand.Parameters.AddWithValue("@email", user.Email);
                     mySqlCommand.Parameters.AddWithValue("@age", user.Age);
                     mySqlCommand.Parameters.AddWithValue("@gender", user.Gender);
-                    mySqlCommand.Parameters.AddWithValue("@active", !user.Active);
                     mySqlCommand.Parameters.AddWithValue("@address", user.Address);
                     mySqlCommand.Parameters.AddWithValue("@phone", user.Phone);
                     var rowsAffected = mySqlCommand.ExecuteNonQuery();
@@ -54,7 +53,6 @@ namespace Practice5.Services
                         user.UserName = rd.GetString("username");
                         user.Email = rd.GetString("email");
                         user.Id = rd.GetInt32("id");
-                        user.Active = rd.GetBoolean("active");
                         users.Add(user);
                     }
                     rd.Close();

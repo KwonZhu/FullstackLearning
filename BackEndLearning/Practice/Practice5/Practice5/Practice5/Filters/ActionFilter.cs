@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Mysqlx.Prepare;
+using System.ComponentModel;
 using System.Text;
 
 namespace Practice5.Filters
@@ -15,9 +17,10 @@ namespace Practice5.Filters
         public void OnActionExecuting(ActionExecutingContext context)
         {
             var controllType = context.Controller.GetType();
-
             var controllerName = controllType.Name;
 
+            //ActionDescriptor: Contains information about the action being executed, such as the action name, route template, and parameters.
+            //ControllerActionDescriptor: A subclass with additional information, specifically about controller actions. It includes details like the controller and action names.
             var controllerActionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
             if (controllerActionDescriptor != null)
             {
