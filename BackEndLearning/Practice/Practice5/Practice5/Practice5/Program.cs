@@ -13,6 +13,9 @@ using System.Data.Common;
 using System.Reflection;
 using System.Text;
 
+//try
+//{
+var policyName = "defalutPolicy";
 var builder = WebApplication.CreateBuilder(args);
 
 //ADO.NET config
@@ -25,7 +28,7 @@ builder.Services.AddDbContext<MoocDBContext>(
 dbContextOptions => dbContextOptions
 .UseMySql(connectionString, serverVersion)
 //the following three options help with debugging, but should
-// be changed or removed for production.
+//be changed or removed for production.
 .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information)
 .EnableSensitiveDataLogging()
 .EnableDetailedErrors()
@@ -75,7 +78,18 @@ builder.Services.AddSwaggerGen(options =>
             new List<string>()
         }
     });
+});
 
+//config cors
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy(policyName, policy =>
+    {
+
+        policy.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
 });
 
 // disable  auto model validation
@@ -96,10 +110,11 @@ builder.Services.AddControllers(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseCors(policyName);
 
 app.UseSwagger();
-app.UseSwaggerUI(c => 
-{ 
+app.UseSwaggerUI(c =>
+{
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
 });
 
@@ -108,3 +123,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+//}
+//catch (Exception ex)
+//{
+
+//}
