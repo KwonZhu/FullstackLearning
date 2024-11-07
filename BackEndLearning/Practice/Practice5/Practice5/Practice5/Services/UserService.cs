@@ -115,7 +115,31 @@ namespace Practice5.Services
                 }
             }
         }
+        public User GetUserByUserName(string userName)
+        {
+            User user = new User();
+            using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
+            {
+                mySqlConnection.Open();
+                string sql = "Select * from user where userName = @userName";
+                using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
+                {
+                    mySqlCommand.CommandText = sql;
+                    mySqlCommand.Parameters.AddWithValue("@userName", userName);
+
+                    using (var rd = mySqlCommand.ExecuteReader())
+                    {
+                        if (rd.Read())
+                        {
+                            user.Id = rd.GetInt32("id");
+                            user.UserName = rd.GetString("username");
+                            user.Email = rd.GetString("email");
+                        }
+                    }
+                }
+            }
+            return user;
+        }
     }
-}
 
 
