@@ -19,7 +19,7 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string insertSql = "insert into user(userName,password,email,age,gender,address,phone) value(@userName,@password,@email,@age,@gender,@address,@phone)";
+                string insertSql = "insert into users(userName,password,email,age,gender,address,phone) value(@userName,@password,@email,@age,@gender,@address,@phone)";
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
                     mySqlCommand.CommandText = insertSql;
@@ -42,7 +42,7 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string sql = "select * from user";
+                string sql = "select * from users";
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
                     mySqlCommand.CommandText = sql;
@@ -66,8 +66,8 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string querySql = "select id from user where id = @id";
-                string updateSql = "update user set username = @username, password = @password, email = @email, age = @age, gender = @gender, address = @address, phone = @phone where id = @id";
+                string querySql = "select id from users where id = @id";
+                string updateSql = "update users set username = @username, password = @password, email = @email, age = @age, gender = @gender, address = @address, phone = @phone where id = @id";
 
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
@@ -105,7 +105,7 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string deleteSql = "delete from user where id = @id";
+                string deleteSql = "delete from users where id = @id";
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
                     mySqlCommand.CommandText = deleteSql;
@@ -121,7 +121,7 @@ namespace Practice5.Services
             using (MySqlConnection mySqlConnection = new MySqlConnection(this.dBConnectionConfig.DBConnection))
             {
                 mySqlConnection.Open();
-                string sql = "Select * from user where userName = @userName";
+                string sql = "Select * from users where userName = @userName";
                 using (MySqlCommand mySqlCommand = mySqlConnection.CreateCommand())
                 {
                     mySqlCommand.CommandText = sql;
@@ -141,5 +141,6 @@ namespace Practice5.Services
             return user;
         }
     }
+}
 
 

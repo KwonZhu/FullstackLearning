@@ -17,6 +17,17 @@ namespace Practice5.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<User>(c =>
+            {
+                c.ToTable("Users");
+                c.HasKey(x => x.Id);
+                c.Property(x => x.UserName).IsRequired().HasMaxLength(50);
+                c.Property(x => x.Password).HasMaxLength(200);
+                c.Property(x => x.Email).HasMaxLength(200);
+                c.Property(x => x.Address).HasMaxLength(500);
+                c.Property(x => x.Phone).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<Category>().ToTable("Categories");
             modelBuilder.Entity<Category>(c => 
             { 

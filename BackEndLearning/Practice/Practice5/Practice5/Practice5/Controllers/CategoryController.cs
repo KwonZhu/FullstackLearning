@@ -16,6 +16,12 @@ namespace Practice5.Controllers
             this._categoryService = categoryService;
         }
 
+        /// <summary>
+        /// Add category
+        /// </summary>
+        /// <param name="category">Category</param>
+        /// <returns></returns>
+        //a <param> element for the parameter, and a <returns> element to document the return value
         [HttpPost]
         public Category AddCategory(AddCategoryInput input)
         {

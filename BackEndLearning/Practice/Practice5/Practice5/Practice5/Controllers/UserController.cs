@@ -116,13 +116,13 @@ namespace Practice5.Controllers
 
         }
 
-        public CommonResult ExceptionTest()
-        {
-            CommonResult commonResult = new CommonResult();
-            int a = 1;
-            int b = 0;
-            var c = a / b;
-            return commonResult;
-        }
+        //public CommonResult ExceptionTest()
+        //{
+        //    CommonResult commonResult = new CommonResult();
+        //    int a = 1;
+        //    int b = 0;
+        //    var c = a / b;
+        //    return commonResult;
+        //}
     }
 }
