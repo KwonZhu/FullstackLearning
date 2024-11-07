@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Practice5.Config;
 using Practice5.Filters;
+using Practice5.Init;
 using Practice5.IServices;
 using Practice5.Models;
 using Practice5.Services;
 using System.Data.Common;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +28,13 @@ builder.Services.AddDbContext<MoocDBContext>(
     .EnableSensitiveDataLogging()
     .EnableDetailedErrors()
     );
+
+//JWT config
+//this JWTConfig need to be used in CreateTokenService
+builder.Services.Configure<JWTConfig>(builder.Configuration.GetSection("JWTConfig"));
+//this jwtConfig need to be used in this program.cs
+var jwtConfig = builder.Configuration.GetSection("JWTConfig").Get<JWTConfig>();
+builder.Services.AddJWT(jwtConfig);
 
 // disable  auto model validation
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
