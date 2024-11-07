@@ -16,7 +16,7 @@ namespace Practice5.Controllers
         private readonly IUserService _userService;
         public UserController(IUserService userService)
         {
-            _userService = userService;
+            this._userService = userService;
         }
 
         [HttpPost]

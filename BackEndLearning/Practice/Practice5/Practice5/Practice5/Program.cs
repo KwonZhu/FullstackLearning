@@ -31,6 +31,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelS
 
 // Add services to the container.
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 builder.Services.AddControllers(options =>
 {
