@@ -105,6 +105,7 @@ builder.Services.AddControllers(options =>
     //options.Filters.Add<ActionFilter>();
     //options.Filters.Add<ExceptionFilter>();
     options.Filters.Add<ResultFilter>();
+    options.Filters.Add<AuthorizeFilter>();
 });
 
 var app = builder.Build();
