@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MySql.Data.MySqlClient;
@@ -19,6 +20,7 @@ namespace Practice5.Controllers
             this._userService = userService;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public CommonResult AddUser(AddUserInput input)
         {
@@ -53,6 +55,7 @@ namespace Practice5.Controllers
             return commonResult;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public List<UserOutput> GetUsers()
         {

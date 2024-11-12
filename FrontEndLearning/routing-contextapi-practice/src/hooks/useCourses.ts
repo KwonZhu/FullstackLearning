@@ -3,6 +3,8 @@ import { Course } from '../types/Course';
 
 export const useCourse = () => {
   const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -13,10 +15,18 @@ export const useCourse = () => {
         }
         const data: Course[] = await response.json();
         setCourses(data);
-      } catch (error: any) {}
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('An unknown error occurred');
+        }
+      } finally {
+        setLoading(false);
+      }
     };
     fetchCourses();
   }, []);
 
-  return { courses };
+  return { courses, loading, error };
 };
