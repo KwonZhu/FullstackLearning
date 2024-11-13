@@ -3,6 +3,10 @@ import HomePage from './pages/HomePage';
 import CourseListPage from './pages/CourseListPage';
 import NavBar from './components/NavBar';
 import UserProfilePage from './pages/UserProfilePage';
+import LoginPage from './pages/LoginPage';
+import ProtectedRoute from './components/ProtectedRoute';
+
+const isAuthenticated = true;
 
 const App = () => {
   return (
@@ -12,7 +16,15 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/courses" element={<CourseListPage />} />
-          <Route path="/profile" element={<UserProfilePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/profile/*"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <UserProfilePage />
+              </ProtectedRoute>
+            }
+          ></Route>
         </Routes>
       </div>
     </div>
