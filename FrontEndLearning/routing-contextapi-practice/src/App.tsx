@@ -10,18 +10,19 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <div className='main-content'>
+      <div className="main-content">
         <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/courses' element={<CourseListPage />} />
-          <Route path='/login' element={<LoginPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/courses" element={<CourseListPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route
-            path='/profile/*'
+            path="/profile/*"
             element={
               <ProtectedRoute>
                 <UserProfilePage />
               </ProtectedRoute>
-            }></Route>
+            }
+          ></Route>
         </Routes>
       </div>
     </div>
