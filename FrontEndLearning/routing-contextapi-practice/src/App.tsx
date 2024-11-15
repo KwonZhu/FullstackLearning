@@ -6,6 +6,8 @@ import UserProfilePage from './pages/UserProfilePage';
 import LoginPage from './pages/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import CourseDetailsPage from './pages/CourseDetailsPage';
+import Settings from './components/Settings';
+import Orders from './components/Orders';
 
 const App = () => {
   return (
@@ -23,8 +25,10 @@ const App = () => {
               <ProtectedRoute>
                 <UserProfilePage />
               </ProtectedRoute>
-            }
-          ></Route>
+            }>
+            <Route path="settings" element={<Settings />} />
+            <Route path="orders" element={<Orders />} />
+          </Route>
         </Routes>
       </div>
     </div>
