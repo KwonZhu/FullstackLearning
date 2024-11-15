@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import UserProfilePage from './pages/UserProfilePage';
 import LoginPage from './pages/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import CourseDetailsPage from './pages/CourseDetailsPage';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/courses" element={<CourseListPage />} />
+          <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route
             path="/profile/*"
