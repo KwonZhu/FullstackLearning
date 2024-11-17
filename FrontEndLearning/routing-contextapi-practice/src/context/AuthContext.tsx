@@ -1,26 +1,26 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-interface UserContextType {
+interface AuthContextType {
   isAuthenticated: boolean;
   toggleAuth: () => void;
 }
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const toggleAuth = () => {
     setIsAuthenticated(!isAuthenticated);
   };
 
-  return <UserContext.Provider value={{ isAuthenticated, toggleAuth }}>{children}</UserContext.Provider>;
+  return <AuthContext.Provider value={{ isAuthenticated, toggleAuth }}>{children}</AuthContext.Provider>;
 };
 
-export const useUser = () => {
-  const context = useContext(UserContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useUser must be used within a UserProvider');
+    throw new Error('useAuth must be used within a AuthProvider');
   }
   return context;
 };

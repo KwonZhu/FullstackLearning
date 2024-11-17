@@ -5,13 +5,17 @@ import HomePage from './HomePage';
 import { render, screen } from '@testing-library/react';
 
 describe('HomePage Component', () => {
-  it('should render Home heading when render correctly', () => {
+  it('should render Home heading correctly', () => {
+    // Act: Render the CourseCard component
     render(<HomePage />);
-    const paragraphElement = screen.getByText(/Welcome to the HomePage/i);
+
+    // Assert: Check if the heading is rendered correctly
     const headingElement = screen.getByRole('heading', { name: /Home/i });
     //screen.getByText(/Home/i): Found multiple elements with the text: /Home/i
-
-    expect(paragraphElement).toBeInTheDocument();
     expect(headingElement).toBeInTheDocument();
+
+    // Assert: Check if the paragraph is rendered correctly
+    const paragraphElement = screen.getByText(/Welcome to the HomePage/i);
+    expect(paragraphElement).toBeInTheDocument();
   });
 });

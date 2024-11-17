@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
+import { useAuth } from '../../context/AuthContext';
 
 const NavBar = () => {
-  const { isAuthenticated, toggleAuth } = useUser();
+  const { isAuthenticated, toggleAuth } = useAuth();
 
   return (
     <nav className="navbar">

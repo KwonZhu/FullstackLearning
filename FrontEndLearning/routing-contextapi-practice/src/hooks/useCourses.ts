@@ -27,6 +27,5 @@ export const useCourse = () => {
     };
     fetchCourses();
   }, []);
-
   return { courses, loading, error };
 };
