@@ -4,7 +4,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 describe('CourseDetailsPage Component', () => {
   it('should display the courseId from the url', () => {
-    //Arrange: Render the CourseDetailsPage within a BrowserRouter with a specific route
+    //Arrange: Render the CourseDetailsPage within a MemoryRouter with a specific initial route
     render(
       <MemoryRouter initialEntries={['/courses/123']}>
         <Routes>
