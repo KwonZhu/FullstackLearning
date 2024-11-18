@@ -1,7 +1,7 @@
 import CourseCard from '../components/CourseCard';
-import { useCourse } from '../hooks/useCourses';
+import { useCourses } from '../hooks/useCourses';
 const CourseListPage = () => {
-  const { courses, loading, error } = useCourse();
+  const { courses, loading, error } = useCourses();
 
   if (loading) {
     return <div>Loading...</div>;

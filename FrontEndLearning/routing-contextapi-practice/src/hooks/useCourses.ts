@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Course } from '../types/Course';
 
-export const useCourse = () => {
+export const useCourses = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
