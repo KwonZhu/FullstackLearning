@@ -18,7 +18,16 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/courses" element={<CourseListPage />} />
           <Route path="/courses/:courseId" element={<CourseDetailsPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                onSubmit={function (_username: string, _password: string): void {
+                  throw new Error('Function not implemented.');
+                }}
+              />
+            }
+          />
           <Route
             path="/profile/*"
             element={
