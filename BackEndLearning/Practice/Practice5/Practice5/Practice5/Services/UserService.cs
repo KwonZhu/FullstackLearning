@@ -134,6 +134,7 @@ namespace Practice5.Services
                             user.Id = rd.GetInt32("id");
                             user.UserName = rd.GetString("username");
                             user.Email = rd.GetString("email");
+                            user.Password = rd.GetString("password"); //for if (user.Password == input.Password) in Login()
                         }
                     }
                 }

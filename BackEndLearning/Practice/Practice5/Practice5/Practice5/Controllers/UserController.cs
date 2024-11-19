@@ -20,7 +20,6 @@ namespace Practice5.Controllers
             this._userService = userService;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public CommonResult AddUser(AddUserInput input)
         {
@@ -55,7 +54,6 @@ namespace Practice5.Controllers
             return commonResult;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public List<UserOutput> GetUsers()
         {

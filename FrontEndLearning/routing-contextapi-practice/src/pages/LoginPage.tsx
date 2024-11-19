@@ -10,6 +10,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Add validation: Prevent submission if either field is empty
+    if (username.trim() === '' || password.trim() === '') {
+      return;
+    }
+
     onSubmit(username, password);
   };
 

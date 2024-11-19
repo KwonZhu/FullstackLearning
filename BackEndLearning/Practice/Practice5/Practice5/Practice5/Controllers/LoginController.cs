@@ -50,7 +50,6 @@ namespace Practice5.Controllers
                 };
                 return result;
             }
-
             return null;
         }
     }

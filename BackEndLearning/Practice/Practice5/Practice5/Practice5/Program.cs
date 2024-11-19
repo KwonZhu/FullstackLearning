@@ -18,6 +18,7 @@ using System.Text;
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 try
 {
+    logger.Debug("init main");
     var policyName = "defalutPolicy";
     var builder = WebApplication.CreateBuilder(args);
 
@@ -82,6 +83,7 @@ try
         }
         });
     });
+    Console.WriteLine("Environment: {0}", builder.Environment.EnvironmentName);
 
     //config cors
     builder.Services.AddCors(option =>
@@ -95,7 +97,7 @@ try
         });
     });
 
-    // disable  auto model validation
+    // disable auto model validation
     builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
 
     // Add services to the container.
