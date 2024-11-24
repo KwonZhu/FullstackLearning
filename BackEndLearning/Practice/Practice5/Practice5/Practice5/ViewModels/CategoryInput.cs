@@ -2,7 +2,7 @@
 {
     public class BaseCategoryInput
     {
-        public string CategroyName { get; set; }
+        public string CategoryName { get; set; }
         public int CategoryLevel { get; set; }
         public int? ParentId { get; set; }
 

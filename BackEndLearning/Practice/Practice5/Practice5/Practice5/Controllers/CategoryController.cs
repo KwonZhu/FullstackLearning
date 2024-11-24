@@ -34,7 +34,7 @@ namespace Practice5.Controllers
         public Category AddCategory(AddCategoryInput input)
         {
             Category category = new Category();
-            category.CategoryName = input.CategroyName;
+            category.CategoryName = input.CategoryName;
             category.CategoryLevel = input.CategoryLevel;
             category.ParentId = input.ParentId;
             var result = this._categoryService.Add(category);
@@ -53,7 +53,7 @@ namespace Practice5.Controllers
             foreach (var category in result)
             {
                 CategoryOutput categoryOutput = new CategoryOutput();
-                categoryOutput.CategroyName = category.CategoryName;
+                categoryOutput.CategoryName = category.CategoryName;
                 categoryOutput.CategoryLevel = category.CategoryLevel;
                 categoryOutput.ParentId = category.ParentId;
                 resultList.Add(categoryOutput);
@@ -70,13 +70,13 @@ namespace Practice5.Controllers
         public async Task<CategoryOutput> UpdateCategoryAsync(UpdateCategoryInput input)
         {
             Category category = new Category();
-            category.CategoryName = input.CategroyName;
+            category.CategoryName = input.CategoryName;
             category.CategoryLevel = input.CategoryLevel;
             category.ParentId = input.ParentId;
             var result = await this._categoryService.UpdateCategoryAsync(category);
 
             CategoryOutput categoryOutput = new CategoryOutput();
-            categoryOutput.CategroyName = result.CategoryName;
+            categoryOutput.CategoryName = result.CategoryName;
             categoryOutput.CategoryLevel = result.CategoryLevel;
             categoryOutput.ParentId = result.ParentId;
             return categoryOutput;
