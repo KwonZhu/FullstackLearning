@@ -35,7 +35,7 @@ namespace TestPractice5.ControllerTest
         public void AddCategory_Should_Add_NewCategory()
         {
             // Arrange
-            var input = new AddCategoryInput
+            var input = new AddCategoryInput()
             {
                 CategoryName = "Sample Category",
                 CategoryLevel = 1,
@@ -68,7 +68,7 @@ namespace TestPractice5.ControllerTest
         }
 
         [Fact]
-        public void GetCategory_should_Return_ListOfCategories()
+        public void GetCategory_Should_Return_ListOfCategories()
         {
             //Arrange
             var mockCategories = new List<Category>()
@@ -84,12 +84,63 @@ namespace TestPractice5.ControllerTest
 
             //Assert
             Assert.NotNull(result);
-            Assert.Equal("Category 1", result[0].CategoryName);
-            Assert.Equal(1, result[0].CategoryLevel);
+            Assert.Equal(mockCategories[0].CategoryName, result[0].CategoryName);
+            Assert.Equal(mockCategories[1].CategoryLevel, result[1].CategoryLevel);
             Assert.Equal(mockCategories.Count(), result.Count());
             _mockCategoryService.Verify(service => service.GetCategories(), Times.Once());
         }
 
-    }
+        [Fact]
+        public async Task UpdateCategoryAsync_Should_Return_UpdatedCategory()
+        {
+            //Arrange
+            var input = new UpdateCategoryInput()
+            {
+                Id = 2,
+                CategoryName = "Updated Category",
+                CategoryLevel = 2,
+                ParentId = 1
+            };
 
+            _mockCategoryService.Setup(service => service.UpdateCategoryAsync(It.IsAny<Category>()))
+                                .ReturnsAsync((Category c) => c);
+
+            //Act
+            var result = await _categoryController.UpdateCategoryAsync(input);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.Equal(input.CategoryName, result.CategoryName);
+            Assert.Equal(input.CategoryLevel, result.CategoryLevel);
+            Assert.Equal(input.ParentId, result.ParentId);
+            _mockCategoryService.Verify(service => service.UpdateCategoryAsync(It.Is<Category>(c => c.CategoryName == input.CategoryName)), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteCategoryAsync_Should_Return_BooleanResult()
+        {
+            //Arrange
+            int validId = 1;
+
+            _mockCategoryService.Setup(service => service.DeleteCategoryAsync(validId)).ReturnsAsync(true);
+
+            var validIdResult = await _categoryController.DeleteCategoryAsync(validId);
+
+            //Assert
+            Assert.True(validIdResult);
+            _mockCategoryService.Verify(service => service.DeleteCategoryAsync(validId), Times.Once);
+
+
+            //Arrange
+            int inValidId = 9999;
+
+            _mockCategoryService.Setup(service => service.DeleteCategoryAsync(inValidId)).ReturnsAsync(false);
+
+            var inValidIdResult = await _categoryController.DeleteCategoryAsync(inValidId);
+
+            //Assert
+            Assert.False(inValidIdResult);
+            _mockCategoryService.Verify(service => service.DeleteCategoryAsync(inValidId), Times.Once);
+        }
+    }
 }
