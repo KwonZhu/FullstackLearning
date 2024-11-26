@@ -9,7 +9,7 @@ namespace Practice5.Models
 
         }
 
-        public DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<User> Users { get; set; } //for JWT
 
