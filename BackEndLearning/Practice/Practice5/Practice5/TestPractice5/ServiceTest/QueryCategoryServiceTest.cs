@@ -115,6 +115,85 @@ namespace TestPractice5.ServiceTest
             // Assert
             Assert.Null(category);
         }
+        [Fact]
+        public async Task UpdateCategoryAsync_Should_Return_UpdatedCategory_When_Successed()
+        {
+            // Arrange
+            var category = new Category { Id = 1, CategoryName = "Math", CategoryLevel = 1 };
+
+            var mockSet = new Mock<DbSet<Category>>();
+            mockSet.Setup(m => m.FindAsync(It.IsAny<object[]>())).ReturnsAsync(category);
+
+            var mockContext = CreateMockContext(mockSet.Object);
+            var service = new CategoryService(mockContext.Object);
+
+            var updatedCategory = new Category { Id = 1, CategoryName = "Advanced Math", CategoryLevel = 2 };
+
+            // Act
+            var result = await service.UpdateCategoryAsync(updatedCategory);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("Advanced Math", result.CategoryName);
+            Assert.Equal(2, result.CategoryLevel);
+            mockContext.Verify(c => c.SaveChangesAsync(default), Times.Once);
+        }
+
+        [Fact]
+        public async Task UpdateCategoryAsync_ReturnsSameCategory_WhenNotFound()
+        {
+            // Arrange
+            var mockSet = new Mock<DbSet<Category>>();
+            var mockContext = CreateMockContext(mockSet.Object);
+            var service = new CategoryService(mockContext.Object);
+
+            var updatedCategory = new Category { Id = 1, CategoryName = "Advanced Math", CategoryLevel = 2 };
+
+            // Act
+            var result = await service.UpdateCategoryAsync(updatedCategory);
+
+            // Assert
+            Assert.Equal(updatedCategory, result);
+            mockContext.Verify(c => c.SaveChangesAsync(default), Times.Never);
+        }
+
+        [Fact]
+        public async Task DeleteCategoryAsync_DeletesCategorySuccessfully()
+        {
+            // Arrange
+            var category = new Category { Id = 1, CategoryName = "Math", CategoryLevel = 1 };
+
+            var mockSet = new Mock<DbSet<Category>>();
+            mockSet.Setup(m => m.FindAsync(It.IsAny<object[]>())).ReturnsAsync(category);
+
+            var mockContext = CreateMockContext(mockSet.Object);
+            var service = new CategoryService(mockContext.Object);
+
+            // Act
+            var result = await service.DeleteCategoryAsync(1);
+
+            // Assert
+            Assert.True(result);
+            mockSet.Verify(m => m.Remove(It.IsAny<Category>()), Times.Once);
+            mockContext.Verify(c => c.SaveChangesAsync(default), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteCategoryAsync_ReturnsFalse_WhenCategoryNotFound()
+        {
+            // Arrange
+            var mockSet = new Mock<DbSet<Category>>();
+            var mockContext = CreateMockContext(mockSet.Object);
+            var service = new CategoryService(mockContext.Object);
+
+            // Act
+            var result = await service.DeleteCategoryAsync(1);
+
+            // Assert
+            Assert.False(result);
+            mockSet.Verify(m => m.Remove(It.IsAny<Category>()), Times.Never);
+            mockContext.Verify(c => c.SaveChangesAsync(default), Times.Never);
+        }
     }
 }
 
