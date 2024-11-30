@@ -1,0 +1,122 @@
+﻿[
+  {
+    "Id": 1,
+    "CategoryName": "Programming",
+    "CategoryLevel": 1,
+    "ParentId": null
+  },
+  {
+    "Id": 2,
+    "CategoryName": "Web Development",
+    "CategoryLevel": 2,
+    "ParentId": 1
+  },
+  {
+    "Id": 3,
+    "CategoryName": "Mobile Development",
+    "CategoryLevel": 2,
+    "ParentId": 1
+  },
+  {
+    "Id": 4,
+    "CategoryName": "Data Science",
+    "CategoryLevel": 1,
+    "ParentId": null
+  },
+  {
+    "Id": 5,
+    "CategoryName": "Machine Learning",
+    "CategoryLevel": 2,
+    "ParentId": 4
+  },
+  {
+    "Id": 6,
+    "CategoryName": "Artificial Intelligence",
+    "CategoryLevel": 2,
+    "ParentId": 4
+  },
+  {
+    "Id": 7,
+    "CategoryName": "Cloud Computing",
+    "CategoryLevel": 1,
+    "ParentId": null
+  },
+  {
+    "Id": 8,
+    "CategoryName": "AWS",
+    "CategoryLevel": 2,
+    "ParentId": 7
+  },
+  {
+    "Id": 9,
+    "CategoryName": "Azure",
+    "CategoryLevel": 2,
+    "ParentId": 7
+  },
+  {
+    "Id": 10,
+    "CategoryName": "Cybersecurity",
+    "CategoryLevel": 1,
+    "ParentId": null
+  },
+  {
+    "Id": 11,
+    "CategoryName": "Network Security",
+    "CategoryLevel": 2,
+    "ParentId": 10
+  },
+  {
+    "Id": 12,
+    "CategoryName": "Ethical Hacking",
+    "CategoryLevel": 2,
+    "ParentId": 10
+  },
+  {
+    "Id": 13,
+    "CategoryName": "Business",
+    "CategoryLevel": 1,
+    "ParentId": null
+  },
+  {
+    "Id": 14,
+    "CategoryName": "Entrepreneurship",
+    "CategoryLevel": 2,
+    "ParentId": 13
+  },
+  {
+    "Id": 15,
+    "CategoryName": "Marketing",
+    "CategoryLevel": 2,
+    "ParentId": 13
+  },
+  {
+    "Id": 16,
+    "CategoryName": "Finance",
+    "CategoryLevel": 2,
+    "ParentId": 13
+  },
+  {
+    "Id": 17,
+    "CategoryName": "Design",
+    "CategoryLevel": 1,
+    "ParentId": null
+  },
+  {
+    "Id": 18,
+    "CategoryName": "Graphic Design",
+    "CategoryLevel": 2,
+    "ParentId": 17
+  },
+  {
+    "Id": 19,
+    "CategoryName": "UX/UI Design",
+    "CategoryLevel": 2,
+    "ParentId": 17
+  },
+  {
+    "Id": 20,
+    "CategoryName": "Photography",
+    "CategoryLevel": 1,
+    "ParentId": null
+  }
+]
