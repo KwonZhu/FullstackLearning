@@ -70,7 +70,7 @@ namespace Practice5.Services
             if (deleteCategory != null)
             {
                 this._moocDBContext.Categories.Remove(deleteCategory);
-                return await this._moocDBContext.SaveChangesAsync() > 0;
+                return await this._moocDBContext.SaveChangesAsync() > 0; //how many entities(rows) were affected
             }
             return false;
         }

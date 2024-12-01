@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2024-12-02_09-44-03" tag="">
+  <assembly name="Practice5">
+    <class name="Practice5.Config.DBConnectionConfig" coveredlines="0" coverablelines="1" totallines="7" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Practice5.Config.JWTConfig" coveredlines="0" coverablelines="4" totallines="11" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Practice5.Controllers.CategoryController" coveredlines="41" coverablelines="41" totallines="97" coveredbranches="2" totalbranches="2" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="Practice5.Controllers.LoginController" coveredlines="0" coverablelines="30" totallines="56" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Practice5.Controllers.UserController" coveredlines="82" coverablelines="82" totallines="129" coveredbranches="17" totalbranches="18" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="Practice5.Filters.ActionFilter" coveredlines="0" coverablelines="23" totallines="47" coveredbranches="0" totalbranches="6" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Practice5.Filters.AuthorizeFilter" coveredlines="0" coverablelines="24" totallines="90" coveredbranches="0" totalbranches="12" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Practice5.Filters.ExceptionFilter" coveredlines="0" coverablelines="11" totallines="29" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Practice5.Filters.PermissionCodeAttribute" coveredlines="0" coverablelines="5" totallines="11" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Practice5.Filters.ResultFilter" coveredlines="0" coverablelines="27" totallines="48" coveredbranches="0" totalbranches="14" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Practice5.Init.JwtInitExtension" coveredlines="0" coverablelines="16" totallines="28" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Practice5.Migrations.initdatabase" coveredlines="0" coverablelines="203" totallines="257" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="Practice5.Migrations.MoocDBContextModelSnapshot" coveredlines="0" coverablelines="115" totallines="142" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Practice5.Models.BaseModel" coveredlines="1" coverablelines="1" totallines="7" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="Practice5.Models.Category" coveredlines="3" coverablelines="5" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="5" />
+    <class name="Practice5.Models.Course" coveredlines="0" coverablelines="4" totallines="11" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Practice5.Models.MoocDBContext" coveredlines="34" coverablelines="34" totallines="49" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="Practice5.Models.User" coveredlines="7" coverablelines="7" totallines="16" coveredbranches="0" totalbranches="0" coveredcodeelements="7" totalcodeelements="7" />
+    <class name="Practice5.Services.CategoryService" coveredlines="35" coverablelines="36" totallines="78" coveredbranches="3" totalbranches="4" coveredcodeelements="6" totalcodeelements="6" />
+    <class name="Practice5.Services.CreateTokenService" coveredlines="0" coverablelines="20" totallines="42" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Practice5.Services.UserService" coveredlines="0" coverablelines="110" totallines="147" coveredbranches="0" totalbranches="6" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="Practice5.ViewModels.BaseCategoryInput" coveredlines="3" coverablelines="3" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="Practice5.ViewModels.CategoryOutput" coveredlines="0" coverablelines="1" totallines="7" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Practice5.ViewModels.CommonResult" coveredlines="3" coverablelines="3" totallines="13" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="Practice5.ViewModels.CommonResult`1" coveredlines="0" coverablelines="1" totallines="13" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Practice5.ViewModels.LoginInput" coveredlines="0" coverablelines="2" totallines="9" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Practice5.ViewModels.LoginOutput" coveredlines="0" coverablelines="3" totallines="12" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="Practice5.ViewModels.PhoneValidationAttribute" coveredlines="0" coverablelines="12" totallines="32" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Practice5.ViewModels.UpdateCategoryInput" coveredlines="1" coverablelines="1" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="Practice5.ViewModels.UserInput" coveredlines="7" coverablelines="7" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="7" totalcodeelements="7" />
+    <class name="Practice5.ViewModels.UserOutput" coveredlines="2" coverablelines="2" totallines="10" coveredbranches="0" totalbranches="0" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="Program" coveredlines="0" coverablelines="101" totallines="148" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="1" />
+  </assembly>
+</coverage>

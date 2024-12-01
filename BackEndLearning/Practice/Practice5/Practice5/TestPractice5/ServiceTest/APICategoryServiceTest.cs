@@ -172,6 +172,36 @@ namespace TestPractice5.ServiceTest
                 Assert.DoesNotContain(context.Categories, c=>c.CategoryName == "Web Development");
             }
         }
+
+        [Fact]
+        public async Task DeleteCategoryAsync_Should_Return_BooleanResult()
+        {
+            //Arrange
+            var filePath = GetFilePath(@"MockData\categories.json");
+            var categories = LoadCategoriesFromJson(filePath);
+
+            var options = new DbContextOptionsBuilder<MoocDBContext>()
+                .UseInMemoryDatabase("TestDatabase_5")
+                .Options;
+
+            //Act
+            using (var context = new MoocDBContext(options))
+            {
+                context.Categories.AddRange(categories);
+                context.SaveChanges();
+            }
+
+            using (var context = new MoocDBContext(options))
+            {
+                var service = new CategoryService(context);
+                var result = await service.DeleteCategoryAsync(3);
+
+                //Assert
+                Assert.True(result);
+                Assert.Equal(19, context.Categories.Count());
+                Assert.Null(context.Categories.FirstOrDefault(c=>c.Id == 3));
+            }
+        }
     }
 }
 
