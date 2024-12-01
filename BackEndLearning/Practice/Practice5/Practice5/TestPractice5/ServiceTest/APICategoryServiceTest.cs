@@ -118,7 +118,60 @@ namespace TestPractice5.ServiceTest
             }
         }
 
-        
+        [Fact]
+        public async Task UpdateCategoryAsync_Should_Return_Category()
+        {
+            //Arrange
+            var filePath = GetFilePath(@"MockData\categories.json");
+            var categories = LoadCategoriesFromJson(filePath);
+
+            var categoryUpdatable = new Category
+            {
+                Id = 2,
+                CategoryName = "Full-Stack Development",
+                CategoryLevel = 2,
+                ParentId = 1
+            };
+            var categoryNonUpdatable = new Category
+            {
+                Id = 21,
+                CategoryName = "Full-Stack Development",
+                CategoryLevel = 2,
+                ParentId = 1
+            };
+
+            var options = new DbContextOptionsBuilder<MoocDBContext>()
+                .UseInMemoryDatabase("TestDatabase_4")
+                .Options;
+
+
+            //Act
+            using (var context = new MoocDBContext(options))
+            {
+                context.Categories.AddRange(categories);
+                context.SaveChanges();
+            }
+
+            using (var context = new MoocDBContext(options))
+            {
+                var service = new CategoryService(context);
+                var result = await service.UpdateCategoryAsync(categoryUpdatable);
+
+                //Assert
+                Assert.NotNull(result);
+                Assert.Equal("Full-Stack Development", result.CategoryName);
+            }
+
+            using (var context = new MoocDBContext(options))
+            {
+                var service = new CategoryService(context);
+                var result = await service.UpdateCategoryAsync(categoryNonUpdatable);
+
+                //Assert
+                Assert.NotNull(result);
+                Assert.DoesNotContain(context.Categories, c=>c.CategoryName == "Web Development");
+            }
+        }
     }
 }
 
