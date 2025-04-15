@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+// progress bar colors
 $line-border-color: #3498db;
 $line-border-empty: #e0e0e0;
 
@@ -8,7 +9,7 @@ $line-border-empty: #e0e0e0;
 
 body {
   background-color: #f6f6fb;
-  font-family: 'Muli', sans-serif;
+  font-family: "Muli", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,14 +25,46 @@ body {
     max-width: 100%;
     margin-bottom: 30px;
     position: relative; //for pseudo class before
+    // the gray progress bar
     &::before {
-      content: '';
+      content: "";
       background-color: $line-border-empty;
+      position: absolute;
       top: 50%;
       left: 0;
-      transform: translateY(-50%);
       width: 100%;
       height: 4px;
+      transform: translateY(-50%);
+      transition: 0.4s ease;
+      z-index: -1; // the gray progress bar will be covered by the blue progress bar
+    }
+  }
+  // the blue progress bar
+  .progress {
+    background-color: $line-border-color;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transform: translateY(-50%);
+    transition: 0.4s ease;
+    z-index: -1; //Although both bars have 'z-index: -1', the later one will cover the old one
+  }
+  .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    background-color: #fff;
+    border: 3px solid $line-border-empty;
+    transition: 0.4 ease;
+    // when the circle is active
+    &.active {
+      border-color: $line-border-color;
     }
   }
 }
