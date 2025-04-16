@@ -67,4 +67,22 @@ body {
       border-color: $line-border-color;
     }
   }
+  .btn {
+    background-color: $line-border-color;
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: $line-border-empty;
+    }
+    // Zoom out button when activated
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 }
