@@ -25,9 +25,9 @@ body {
     max-width: 100%;
     margin-bottom: 30px;
     position: relative; //for pseudo class before
-    // the gray progress bar
+    // the gray progress bar (::before pseudo-element)
     &::before {
-      content: "";
+      content: ""; // requires a 'content' property even just an empty string (""), otherwise the pseudo-element will not render at all
       background-color: $line-border-empty;
       position: absolute;
       top: 50%;
@@ -45,7 +45,7 @@ body {
     position: absolute;
     top: 50%;
     left: 0;
-    width: 100%;
+    width: 0%;
     height: 4px;
     transform: translateY(-50%);
     transition: 0.4s ease;
