@@ -19,7 +19,13 @@ const table = [
   { min: 18201, max: 45000, floor: 18200, base: 0, rate: 0.16 },
   { min: 45001, max: 135000, floor: 45000, base: 4288, rate: 0.3 },
   { min: 135001, max: 190000, floor: 135000, base: 31288, rate: 0.37 },
-  { min: 190001, max: Number.POSITIVE_INFINITY, floor: 190000, base: 51628, rate: 0.45 },
+  {
+    min: 190001,
+    max: Number.POSITIVE_INFINITY,
+    floor: 190000,
+    base: 51638,
+    rate: 0.45,
+  },
 ];
 
 function taxCalculator(income) {
@@ -32,7 +38,29 @@ function taxCalculator(income) {
   // destructuring
   const { floor, base, rate } = table[index];
   tax = (income - floor) * rate + base;
-  console.log('Payable tax: $' + tax);
+  console.log("Payable tax: $" + tax);
 }
 
 taxCalculator(0);
+
+// version 2
+const table_2 = [
+  {
+    min: 0,
+    max: 18200,
+    base: 0,
+    rate: 0,
+  },
+  { min: 18201, max: 45000, base: 0, rate: 0.16 },
+  { min: 45001, max: 135000, base: 4288, rate: 0.3 },
+  { min: 135001, max: 190000, base: 31288, rate: 0.37 },
+  { min: 190001, max: Infinity, base: 51638, rate: 0.45 },
+];
+
+function calculateTax(income, table_2) {
+  const range = table_2.find((item) => item.min < income && item.max > income);
+
+  const [min, base, rate] = range;
+  return base + (income - min) * rate;
+}
+calculateTax(100000);
